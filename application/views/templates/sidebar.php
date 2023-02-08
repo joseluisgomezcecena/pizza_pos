@@ -42,6 +42,9 @@
 					<li>
 						<a href="<?php echo base_url() ?>admin/items">Platillos</a>
 					</li>
+					<li>
+						<a href="<?php echo base_url() ?>admin/extras">Extras</a>
+					</li>
 				</ul>
 			</li>
 

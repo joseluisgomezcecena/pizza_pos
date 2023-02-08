@@ -56,6 +56,7 @@ $route['cashier'] = 'cashiers/index';
 //clients
 $route['cashier/clients/add'] = 'cashiers/addclient';
 
+
 //orders and items
 $route['cashier/order/(:any)'] = 'orders/createorder/$1';
 $route['cashier/order/items/(:any)'] = 'orders/neworder/$1';
@@ -64,8 +65,13 @@ $route['cashier/order/items/add/(:any)'] = 'orders/addtocart/$1';
 $route['cashier/order/items/(:any)/remove/(:any)'] = 'orders/removefromcart/$1/$2';
 $route['cashier/order/addtoorder/(:any)'] = 'orders/addtoorder/$1';
 
+
 //ajax routes
 $route['ajaxprice'] = 'orders/getprice';
+
+
+
+
 
 /* ADMINISTRATION OF RESTAURANT: MENU, MENU ITEMS, PRICES & CONFIG  */
 
@@ -78,7 +84,11 @@ $route['admin/ingredients'] = 'ingredients/index';
 //sizes
 $route['admin/sizes'] = 'sizes/index';
 
+//extras
+$route['admin/extras'] = 'extras/index';
 
+//menu items
+$route['admin/items'] = 'items/index';
 
 $route['(:any)'] = 'pages/view/$1';
 $route['default_controller'] = 'pages/view';
