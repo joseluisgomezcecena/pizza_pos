@@ -75,6 +75,7 @@ class SizeModel extends CI_Model
 		}
 	}
 
+
 	public function create_size()
 	{
 		$data = array(

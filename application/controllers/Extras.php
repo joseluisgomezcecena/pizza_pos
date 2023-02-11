@@ -9,8 +9,6 @@ class Extras extends CI_Controller
 		$data['sizes'] = $this->SizeModel->get_sizes();
 
 		$this->form_validation->set_rules('ingredient_id', 'Ingrediente.', 'required');
-		//$this->form_validation->set_rules('extra_price', 'Precio.', 'required');
-		//$this->form_validation->set_rules('size_id', 'Tamaño.', 'required');
 
 		foreach ($data['sizes'] as $size)
 		{

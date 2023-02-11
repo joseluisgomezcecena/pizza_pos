@@ -58,11 +58,16 @@ $route['cashier/clients/add'] = 'cashiers/addclient';
 
 
 //orders and items
-$route['cashier/order/(:any)'] = 'orders/createorder/$1';
-$route['cashier/order/items/(:any)'] = 'orders/neworder/$1';
-$route['cashier/order/items/detail/(:any)/(:any)'] = 'orders/detail/$1/$2';
+$route['cashier/order/(:any)'] = 'orders/createorder/$1';//generates a new order and redirects to the following route.
+
+$route['cashier/order/items/(:any)'] = 'orders/neworder/$1'; //loads view with menu items and order details
+
+$route['cashier/order/items/detail/(:any)/(:any)'] = 'orders/detail/$1/$2';//loads view with menu item details
+
 $route['cashier/order/items/add/(:any)'] = 'orders/addtocart/$1';
-$route['cashier/order/items/(:any)/remove/(:any)'] = 'orders/removefromcart/$1/$2';
+
+$route['cashier/order/items/remove/(:any)/(:any)'] = 'orders/removefromcart/$1/$2';
+
 $route['cashier/order/addtoorder/(:any)'] = 'orders/addtoorder/$1';
 
 
@@ -80,16 +85,25 @@ $route['admin'] = 'admins/index';
 
 //ingredients
 $route['admin/ingredients'] = 'ingredients/index';
-
+$route['admin/ingredients/edit/(:any)'] = 'ingredients/edit/$1';
+$route['admin/ingredients/delete/(:any)'] = 'ingredients/delete/$1';
 //sizes
 $route['admin/sizes'] = 'sizes/index';
+$route['admin/sizes/edit/(:any)'] = 'sizes/edit/$1';
+$route['admin/sizes/delete/(:any)'] = 'sizes/delete/$1';
 
 //extras
 $route['admin/extras'] = 'extras/index';
+$route['admin/extras/edit/(:any)'] = 'extras/edit/$1';
+$route['admin/extras/delete/(:any)'] = 'extras/delete/$1';
 
 //menu items
 $route['admin/items'] = 'items/index';
+$route['admin/items/edit/(:any)'] = 'items/edit/$1';
+$route['admin/items/delete/(:any)'] = 'items/delete/$1';
 
+
+/* PAGES ROUTES */
 $route['(:any)'] = 'pages/view/$1';
 $route['default_controller'] = 'pages/view';
 $route['404_override'] = '';

@@ -13,8 +13,22 @@ class ExtraModel extends CI_Model
 		$this->db->from('extras');
 		$this->db->join('ingredients', 'ingredients.ingredient_id = extras.ingredient_id');
 		$this->db->join('sizes', 'sizes.size_id = extras.size_id');
-		$this->db->order_by('extras.extra_id', 'DESC');
+		$this->db->order_by('extras.extra_id', 'ASC');
 		$query = $this->db->get();
+
+		return $query->result_array();
+	}
+
+
+	public function get_extras_by_name()
+	{
+		$this->db->select('DISTINCT(extras.ingredient_id),ingredients.ingredient_name, extras.extra_id');
+		$this->db->from('extras');
+		$this->db->join('ingredients', 'ingredients.ingredient_id = extras.ingredient_id');
+		$query = $this->db->get();
+
+		$last_query = $this->db->last_query();
+		print_r($last_query);
 
 		return $query->result_array();
 	}

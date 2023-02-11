@@ -3,7 +3,6 @@ class Ingredients extends CI_Controller
 {
 	public function index()
 	{
-
 		$data['title'] = "Ingredientes.";
 		$data['ingredients'] = $this->IngredientModel->get_ingredients();
 
@@ -34,6 +33,43 @@ class Ingredients extends CI_Controller
 	}
 
 
+	public function edit($id = NULL)
+	{
+		$data['title'] = "Actualizar ingrediente.";
+		$data['ingredient'] = $this->IngredientModel->get_ingredients($id);
+
+		if(empty($data['ingredient']))
+		{
+			show_404();
+		}
+
+		$this->form_validation->set_rules(
+			'ingredient_name',
+			'Nombre del Ingrediente.',
+			'required|callback_check_ingredient_exists'
+		);
+
+		if($this->form_validation->run() === FALSE)
+		{
+
+
+			//load header, page & footer
+			$this->load->view('templates/header');
+			$this->load->view('templates/topnav');
+			$this->load->view('templates/sidebar');
+			$this->load->view('templates/wrapper');
+			$this->load->view('ingredients/edit', $data); //loading page and data
+			$this->load->view('templates/footer');
+		}
+		else
+		{
+			$this->IngredientModel->update_ingredient();
+			$this->session->set_flashdata('ingredient_updated', 'El ingrediente ha sido actualizado.');
+			redirect(base_url() . 'ingredients/index');
+		}
+	}
+
+
 	public function create()
 	{
 		$data['title'] = "Nuevo tamaño.";
@@ -59,6 +95,9 @@ class Ingredients extends CI_Controller
 			redirect('sizes/new');
 		}
 	}
+
+
+
 
 
 	function check_ingredient_exists($ingredient)

@@ -22,12 +22,30 @@ class IngredientModel extends CI_Model
 		}
 	}
 
+
 	public function create_ingredient()
 	{
 		$data = array(
 			'ingredient_name' => $this->input->post('ingredient_name')
 		);
 		$this->db->insert('ingredients', $data);
+	}
+
+
+	public function edit_ingredient($id)
+	{
+		$data = array(
+			'ingredient_name' => $this->input->post('ingredient_name')
+		);
+		$this->db->where('ingredient_id', $id);
+		$this->db->update('ingredients', $data);
+	}
+
+
+	public function delete_ingredient($id)
+	{
+		$this->db->where('ingredient_id', $id);
+		$this->db->delete('ingredients');
 	}
 
 

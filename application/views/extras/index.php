@@ -64,17 +64,24 @@
 				</tr>
 				</thead>
 				<tbody>
-				<?php foreach ($extras as $extra): ?>
+
+
+				<?php
+				//loop through json data
+				foreach ($extras as $extra) { ?>
 					<tr>
-						<td class="font-weight-bold"><?php echo $extra['ingredient_name']; ?></td>
-						<td class="font-weight-bold"><?php echo $extra['size_name']; ?></td>
-						<td class="font-weight-bold"><?php echo $extra['extra_price']; ?></td>
-						<td class="">
-							<a href="<?php echo $extra['extra_id']; ?>" class="btn btn-primary">Actualizar</a>
-							<a href="<?php echo $extra['extra_id']; ?>" class="btn btn-danger">Eliminar</a>
+						<td><?php echo $extra['ingredient_name']; ?></td>
+						<td><?php echo $extra['size_name']; ?></td>
+						<td><?php echo $extra['extra_price']; ?></td>
+						<td>
+							<a href="<?php echo base_url(); ?>extras/edit/<?php echo $extra['extra_id']; ?>" class="btn btn-primary btn-sm">Editar</a>
+							<a href="<?php echo base_url(); ?>extras/delete/<?php echo $extra['extra_id']; ?>" class="btn btn-danger btn-sm">Eliminar</a>
 						</td>
 					</tr>
-				<?php endforeach; ?>
+				<?php } ?>
+
+
+
 				</tbody>
 
 

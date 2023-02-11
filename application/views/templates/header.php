@@ -48,6 +48,13 @@
 			background-color: rgba(14, 14, 14, 0.18);
 			border-radius: 15px;
 		}
+
+		/*
+		.btn-primary {
+			background-color: #ff3f24 !important;
+			border-color: #f44336 !important;
+		}
+		*/
 	</style>
 
 </head>

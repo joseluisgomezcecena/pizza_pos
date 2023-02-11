@@ -139,4 +139,5 @@ $autoload['model'] = array(
 	'OrderModel',
 	'IngredientModel',
 	'ExtraModel',
+	'ItemModel',
 );
