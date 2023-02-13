@@ -74,8 +74,8 @@
 						<td><?php echo $extra['size_name']; ?></td>
 						<td><?php echo $extra['extra_price']; ?></td>
 						<td>
-							<a href="<?php echo base_url(); ?>extras/edit/<?php echo $extra['extra_id']; ?>" class="btn btn-primary btn-sm">Editar</a>
-							<a href="<?php echo base_url(); ?>extras/delete/<?php echo $extra['extra_id']; ?>" class="btn btn-danger btn-sm">Eliminar</a>
+							<a href="<?php echo base_url(); ?>admin/extras/edit/<?php echo $extra['extra_id']; ?>" class="btn btn-primary btn-sm">Editar</a>
+							<a href="<?php echo base_url(); ?>admin/extras/delete/<?php echo $extra['extra_id']; ?>" class="btn btn-danger btn-sm">Eliminar</a>
 						</td>
 					</tr>
 				<?php } ?>

@@ -31,12 +31,12 @@
 				</div>
 			</div>
 
-			<?php echo form_open(base_url() . 'items/edit/' . $item['item_id']) ?>
+			<?php echo form_open(base_url() . 'items/delete/' . $item['item_id']) ?>
 
 				<div class="row">
 					<div class="form-group col-lg-12">
 						<label for="inputPassword2" class="sr-only">Nombre del platillo</label>
-						<input type="text" class="form-control" name="item_name"  id="name" value="<?php echo $item['item_name'] ?>" placeholder="Ej. Pizza de Pepperoni.">
+						<input type="text" class="form-control" name="item_name"  id="name" value="<?php echo $item['item_name'] ?>" placeholder="Ej. Pizza de Pepperoni." disabled>
 					</div>
 
 					<div style="padding-left: 32px; padding-right: 15px" class="row">
@@ -63,7 +63,7 @@
 
 							<!--checkboxes-->
 							<div class="form-check col-lg-3 mt-2 mb-2">
-								<input class="form-check-input" type="checkbox" name="ingredient_id[]" <?php echo $checked ?> value="<?php echo $ingredient['ingredient_id']; ?>" id="defaultCheck1">
+								<input class="form-check-input" type="checkbox" name="ingredient_id[]" <?php echo $checked ?> value="<?php echo $ingredient['ingredient_id']; ?>" id="defaultCheck1" disabled>
 								<label class="form-check-label" for="defaultCheck1">
 									<?php echo $ingredient['ingredient_name']; ?>
 								</label>
@@ -95,13 +95,13 @@
 
 						<div class="form-group mb-2 mt-3 col-lg-4">
 							<label for="inputPassword2" class="">Precio para: <?php echo $size['size_name'] ?></label>
-							<input type="number" class="form-control" value="<?php echo $price; ?>" name="<?php echo $size['size_name'] ?>_price"  id="name" placeholder="Precio para: <?php echo $size['size_name'] ?>">
+							<input type="number" class="form-control" value="<?php echo $price; ?>" name="<?php echo $size['size_name'] ?>_price"  id="name" placeholder="Precio para: <?php echo $size['size_name'] ?>" disabled>
 						</div>
 					<?php endforeach; ?>
 
 
 					<div class="col mt-5 mb-5">
-						<button type="submit" class="btn btn-primary mb-2 float-right">Guardar</button>
+						<button type="submit" name="delete" class="btn btn-danger mb-2 float-right">Eliminar</button>
 					</div>
 				</div><!--row ends-->
 

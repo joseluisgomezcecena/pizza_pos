@@ -30,7 +30,7 @@ class Items extends CI_Controller
 		else
 		{
 			$this->ItemModel->create($data['sizes']);
-			$this->session->set_flashdata('item_created', 'El platillo ha sido creado.');
+			$this->session->set_flashdata('message', 'El platillo ha sido creado.');
 			redirect(base_url() . 'items/index');
 		}
 	}
@@ -70,13 +70,45 @@ class Items extends CI_Controller
 		else
 		{
 			$this->ItemModel->edit($data['sizes'], $id);
-			$this->session->set_flashdata('item_created', 'El platillo ha sido editado.');
+			$this->session->set_flashdata('message', 'El platillo ha sido editado.');
 			redirect(base_url() . 'items/index');
 		}
 
 
 	}
 
+
+	public function delete($id = NULL)
+	{
+		$data['controller'] = $this;
+
+		$data['title'] = "Eliminar de Menu.";
+		$data['items'] = $this->ItemModel->index();
+		$data['ingredients'] = $this->IngredientModel->get_ingredients();
+		$data['sizes'] = $this->SizeModel->get_sizes();
+
+		$data['item'] = $this->ItemModel->get($id);
+		$data['item_ingredients'] = $this->ItemModel->get_item_ingredients($id);
+		$data['item_sizes'] = $this->ItemModel->get_item_sizes($id);
+
+
+		if(!isset($_POST['delete']))
+		{
+			//load header, page & footer
+			$this->load->view('templates/header');
+			$this->load->view('templates/topnav');
+			$this->load->view('templates/sidebar');
+			$this->load->view('templates/wrapper');
+			$this->load->view('items/delete', $data); //loading page and data
+			$this->load->view('templates/footer');
+		}
+		else
+		{
+			$this->ItemModel->delete($id);
+			$this->session->set_flashdata('message', 'El platillo ha sido eliminado.');
+			redirect(base_url() . 'items/index');
+		}
+	}
 
 
 
