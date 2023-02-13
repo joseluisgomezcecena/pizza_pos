@@ -32,6 +32,8 @@ class IngredientModel extends CI_Model
 	}
 
 
+
+
 	public function edit_ingredient($id)
 	{
 		$data = array(
@@ -42,11 +44,15 @@ class IngredientModel extends CI_Model
 	}
 
 
+
+
 	public function delete_ingredient($id)
 	{
 		$this->db->where('ingredient_id', $id);
 		$this->db->delete('ingredients');
 	}
+
+
 
 
 	public function check_ingredient_exists($ingredient)

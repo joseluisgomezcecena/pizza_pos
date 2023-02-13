@@ -2,16 +2,13 @@
 
 	<div class="row">
 		<div class="col">
-			<?php if($this->session->flashdata('ingredient_created')): ?>
+			<?php if($this->session->flashdata('message')): ?>
 				<div class="alert alert-success alert-dismissible fade show" role="alert">
-
 					<span class="alert-icon m-r-20 font-size-30">
 						<i class="anticon anticon-check-circle"></i>
 					</span>
-
-					<strong>Cambios Guardados!</strong>
-
-					<?php echo $this->session->flashdata('ingredient_created'); ?>
+					<strong>Operación Exitosa</strong>
+					<?php echo $this->session->flashdata('message'); ?>
 					<button type="button" class="close" data-dismiss="alert" aria-label="Close">
 						<span aria-hidden="true">&times;</span>
 					</button>
@@ -50,8 +47,8 @@
 					<tr>
 						<td class="font-weight-bold"><?php echo $ingredient['ingredient_name']; ?></td>
 						<td class="">
-							<a href="<?php echo $ingredient['ingredient_id']; ?>" class="btn btn-primary">Actualizar</a>
-							<a href="<?php echo $ingredient['ingredient_id']; ?>" class="btn btn-danger">Eliminar</a>
+							<a href="<?php echo base_url() ?>admin/ingredients/edit/<?php echo $ingredient['ingredient_id']; ?>" class="btn btn-primary">Actualizar</a>
+							<a href="<?php echo base_url() ?>admin/ingredients/delete/<?php echo $ingredient['ingredient_id']; ?>" class="btn btn-danger">Eliminar</a>
 						</td>
 					</tr>
 				<?php endforeach; ?>

@@ -25,12 +25,13 @@ class Ingredients extends CI_Controller
 		else
 		{
 			$this->IngredientModel->create_ingredient();
-			$this->session->set_flashdata('size_created', 'El tamaño ha sido creado.');
+			$this->session->set_flashdata('message', 'El tamaño ha sido creado.');
 			redirect(base_url() . 'ingredients/index');
 		}
 
 
 	}
+
 
 
 	public function edit($id = NULL)
@@ -63,11 +64,47 @@ class Ingredients extends CI_Controller
 		}
 		else
 		{
-			$this->IngredientModel->update_ingredient();
-			$this->session->set_flashdata('ingredient_updated', 'El ingrediente ha sido actualizado.');
+			$this->IngredientModel->edit_ingredient($id);
+			$this->session->set_flashdata('message', 'El ingrediente ha sido actualizado.');
 			redirect(base_url() . 'ingredients/index');
 		}
 	}
+
+
+
+
+
+	public function delete($id = NULL)
+	{
+		$data['title'] = "Editar o Actualizar ingrediente.";
+		$data['ingredient'] = $this->IngredientModel->get_ingredients($id);
+
+		if(empty($data['ingredient']))
+		{
+			show_404();
+		}
+
+		if(!isset($_POST['delete']))
+		{
+			//load header, page & footer
+			$this->load->view('templates/header');
+			$this->load->view('templates/topnav');
+			$this->load->view('templates/sidebar');
+			$this->load->view('templates/wrapper');
+			$this->load->view('ingredients/delete', $data); //loading page and data
+			$this->load->view('templates/footer');
+		}
+		else
+		{
+			$this->IngredientModel->delete_ingredient($id);
+			$this->session->set_flashdata('message', 'El ingrediente ha sido eliminado.');
+			redirect(base_url() . 'ingredients/index');
+		}
+	}
+
+
+
+
 
 
 	public function create()

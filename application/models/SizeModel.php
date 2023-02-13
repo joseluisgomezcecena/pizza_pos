@@ -85,6 +85,21 @@ class SizeModel extends CI_Model
 	}
 
 
+	public function edit_size($id)
+	{
+		$data = array(
+			'size_name' => $this->input->post('size_name')
+		);
+		$this->db->update('sizes', $data, array('size_id' => $id));
+	}
+
+
+	public function delete_size($id)
+	{
+		$this->db->delete('sizes', array('size_id' => $id));
+	}
+
+
 	public function check_size_exists($size)
 	{
 		$query = $this->db->get_where('sizes', array('size_name' => $size));
