@@ -14,14 +14,32 @@ class ItemModel extends CI_Model
 
 	public function get($id)
 	{
-		$this->db->select('items.*, ingredients.ingredient_name, sizes.size_name');
-		$this->db->from('items');
-		$this->db->join('ingredients', 'ingredients.ingredient_id = items.ingredient_id');
-		$this->db->join('sizes', 'sizes.size_id = items.size_id');
-		$this->db->where('items.item_id', $id);
-		$query = $this->db->get();
+		$query = $this->db->get_where('items', array('item_id' => $id));
 		return $query->row_array();
 	}
+
+
+	public function get_item_ingredients($id)
+	{
+		$this->db->select('*');
+		$this->db->from('item_ingredient');
+		$this->db->join('ingredients', 'ingredients.ingredient_id = item_ingredient.ingredient_id');
+		$this->db->where('item_id', $id);
+		$query = $this->db->get();
+		return $query->result_array();
+	}
+
+
+	public function get_item_sizes($id)
+	{
+		$this->db->select('*');
+		$this->db->from('item_size');
+		$this->db->join('sizes', 'sizes.size_id = item_size.size_id');
+		$this->db->where('item_id', $id);
+		$query = $this->db->get();
+		return $query->result_array();
+	}
+
 
 	public function itemdetails($id)
 	{
@@ -70,6 +88,56 @@ class ItemModel extends CI_Model
 	}
 
 
+
+	public function edit($sizes, $id)
+	{
+		/*********** DELETE EVERYTHING FROM ITEM_SIZE *******/
+
+		$this->db->delete('item_size', array('item_id' => $id));
+		$this->db->delete('item_ingredient', array('item_id' => $id));
+
+		/*********** UPDATE INTO ITEMS ***********/
+		$data = array(
+			'item_name' => $this->input->post('item_name'),
+		);
+		$this->db->update('items', $data, array('item_id' => $id));
+
+
+		/*********** Insert last id ITEM_SIZE ***********/
+		foreach ($sizes as $size)
+		{
+			$data = array(
+				'item_id' => $id,
+				'price' => $this->input->post($size['size_name'].'_price'),
+				'size_id' => $size['size_id'],
+			);
+
+			$this->db->insert('item_size', $data);
+		}
+
+		//insertinto item_ingredient
+		$ingredients = $this->input->post('ingredient_id');
+		foreach ($ingredients as $ingredient)
+		{
+			$data = array(
+				'item_id' => $id,
+				'ingredient_id' => $ingredient,
+			);
+
+			$this->db->insert('item_ingredient', $data);
+		}
+
+	}
+
+
+
+
+	public function delete($id)
+	{
+		$this->db->delete('items', array('item_id' => $id));
+		$this->db->delete('item_size', array('item_id' => $id));
+		$this->db->delete('item_ingredient', array('item_id' => $id));
+	}
 
 
 
