@@ -59,16 +59,21 @@ $route['cashier/clients/add'] = 'cashiers/addclient';
 
 //orders and items
 $route['cashier/order/(:any)'] = 'orders/createorder/$1';//generates a new order and redirects to the following route.
-
 $route['cashier/order/items/(:any)'] = 'orders/neworder/$1'; //loads view with menu items and order details
-
 $route['cashier/order/items/detail/(:any)/(:any)'] = 'orders/detail/$1/$2';//loads view with menu item details
-
 $route['cashier/order/items/add/(:any)'] = 'orders/addtocart/$1';
-
 $route['cashier/order/items/remove/(:any)/(:any)'] = 'orders/removefromcart/$1/$2';
-
 $route['cashier/order/addtoorder/(:any)'] = 'orders/addtoorder/$1';
+
+
+//items
+$route['cashier/order/items/edit/(:any)/(:any)'] = 'orders/edititem/$1/$2';
+$route['cashier/order/items/delete/(:any)/(:any)'] = 'orders/deleteitem/$1/$2';
+$route['cashier/order/items/up/(:any)/(:any)'] = 'orders/up/$1/$2';
+$route['cashier/order/items/down/(:any)/(:any)'] = 'orders/down/$1/$2';
+
+//complete order
+$route['cashier/order/items/complete/(:any)'] = 'orders/completeorder/$1';
 
 
 //ajax routes
