@@ -7,6 +7,7 @@ class OrderModel extends CI_Model
 		$this->load->database();
 	}
 
+
 	public function newOrder($id)
 	{
 		$data = [
@@ -16,11 +17,8 @@ class OrderModel extends CI_Model
 		];
 
 		$this->db->insert('orders', $data);
-		//$last_query = $this->db->last_query();
-		//print_r($last_query);
 		return $this->db->insert_id();
 	}
-
 
 
 	public function newOrderItem($size, $item, $order, $qty, $extras)
@@ -37,10 +35,19 @@ class OrderModel extends CI_Model
 		$this->db->insert('order_items', $data);
 		$last_query = $this->db->last_query();
 		print_r($last_query);
-		return $this->db->insert_id();
+		$this->db->insert_id();
+
+		foreach ($extras as $extra) {
+			$data = [
+				'oi_id'=>$this->db->insert_id(),
+				'extra_ingredient_id'=>$extra,
+				'extra_size_id'=>$size,
+				'price'=>$this->get_price_extra($size, $extra)
+			];
+			$this->db->insert('order_item_extras', $data);
+		}
+
 	}
-
-
 
 
 	public function get_order_items($order_id)
@@ -55,6 +62,47 @@ class OrderModel extends CI_Model
 	}
 
 
+	public function up($item)
+	{
+		$this->db->set('qty', 'qty+1', FALSE);
+		$this->db->where('oi_id', $item);
+		$this->db->update('order_items');
+	}
+
+
+	public function down($item)
+	{
+		$this->db->set('qty', 'qty-1', FALSE);
+		$this->db->where('oi_id', $item);
+		$this->db->update('order_items');
+
+		$this->db->select('qty');
+		$this->db->from('order_items');
+		$this->db->where('oi_id', $item);
+		$query = $this->db->get();
+		$result = $query->row_array();
+		if($result['qty'] == 0 || $result['qty'] < 0)
+		{
+			$this->db->where('oi_id', $item);
+			$this->db->delete('order_items');
+		}
+	}
+
+
+	public function delete($item)
+	{
+		$this->db->where('oi_id', $item);
+		$this->db->delete('order_items');
+	}
+
+
+
+
+
+
+
+
+
 
 	//callback function for get price
 	public function getprice($size)
@@ -62,6 +110,17 @@ class OrderModel extends CI_Model
 		$this->db->select('price');
 		$this->db->from('item_size');
 		$this->db->where('size_id', $size);
+		$query = $this->db->get();
+		$result = $query->row_array();
+		return $result['price'];
+	}
+
+	public function get_price_extra($size, $extra)
+	{
+		$this->db->select('price');
+		$this->db->from('extras');
+		$this->db->where('size_id', $size);
+		$this->db->where('ingredient_id', $extra);
 		$query = $this->db->get();
 		$result = $query->row_array();
 		return $result['price'];

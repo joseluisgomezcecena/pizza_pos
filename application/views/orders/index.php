@@ -12,7 +12,7 @@
 </style>
 
 
-	<?php echo form_open(base_url() . 'cashiers/addclient',array('class' => 'mt-5', 'id' => 'form')); ?>
+	<?php //echo form_open(base_url() . 'cashiers/addclient',array('class' => 'mt-5', 'id' => 'form')); ?>
 
 	<div class="container-fluid mt-5 mb-5">
 		<div class="row">
@@ -68,10 +68,21 @@
 								<td>$<?php echo $order_detail['price'] ?> X <?php echo $order_detail['qty'] ?></td>
 								<td>$<?php echo $order_detail['price'] *  $order_detail['qty'] ?></td>
 								<td>
+
 									<a class="btn btn-dark" href="<?php echo base_url() ?>cashier/order/items/edit/<?php echo $order_detail['oi_id'] ?>"><i class="fa fa-edit text-white"></i></a>
-									<a class="btn btn-danger" href="<?php echo base_url() ?>cashier/order/items/remove/<?php echo $order_detail['oi_id'] ?>"><i class="fa fa-trash text-white"></i></a>
-									<a class="btn btn-success" href="#"><i class="fa fa-arrow-up text-white"></i></a>
-									<a class="btn btn-warning" href="#"><i class="fa fa-arrow-down text-white"></i></a>
+
+									<?php echo form_open(base_url() . 'orders/remove/' . $order_detail['order_id'] . '/' . $order_detail['oi_id'], array('class' => 'form-inline', 'id' => 'form')) ?>
+										<button class="btn btn-danger" name="remove"><i class="fa fa-trash text-white"></i></button>
+									<?php echo form_close() ?>
+
+									<?php echo form_open(base_url() . 'orders/up/' . $order_detail['order_id'] . '/' . $order_detail['oi_id'],array('class' => 'form-inline', 'id' => 'form')) ?>
+										<button class="btn btn-success" name="up"><i class="fa fa-arrow-up text-white"></i></button>
+									<?php echo form_close() ?>
+
+									<?php echo form_open(base_url() . 'orders/down/' . $order_detail['order_id'] . '/' . $order_detail['oi_id'],array('class' => 'form-inline', 'id' => 'form')) ?>
+										<button class="btn btn-warning" name="down"><i class="fa fa-arrow-down text-white"></i></button>
+									<?php echo form_close() ?>
+
 								</td>
 							</tr>
 						<?php endforeach; ?>
@@ -86,7 +97,7 @@
 	</div>
 	</div>
 
-	<?php echo form_close(); ?>
+	<?php //echo form_close(); ?>
 
 
 

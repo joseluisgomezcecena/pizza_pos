@@ -79,7 +79,75 @@ class Orders extends  CI_Controller
 	}
 
 
+	public function edit($item, $order)
+	{
+		$data['item'] = $this->ProductModel->get($item);
 
+
+
+		$this->form_validation->set_rules('size', 'Tamaño', 'required');
+		$this->form_validation->set_rules('qty', 'Cantidad', 'required');
+	}
+
+
+	public function up($order, $order_item)
+	{
+		$data['title'] = 'Agregar elemento.';
+
+		if(isset($_POST['up']))
+		{
+			$this->OrderModel->up($order_item);
+			redirect(base_url() . 'cashier/order/items/' . $order);
+		}
+		else
+		{
+			//load header, page & footer
+			$this->load->view('templates/header');
+			$this->load->view('templates/topnav');
+			$this->load->view('orders/index', $data); //loading page and data
+			$this->load->view('templates/footer_cashier');
+		}
+	}
+
+
+	public function down($order,$order_item)
+	{
+		$data['title'] = 'Descontar elemento.';
+
+		if(isset($_POST['down']))
+		{
+			$this->OrderModel->down($order_item);
+			redirect(base_url() . 'cashier/order/items/' . $order);
+		}
+		else
+		{
+			//load header, page & footer
+			$this->load->view('templates/header');
+			$this->load->view('templates/topnav');
+			$this->load->view('orders/index', $data); //loading page and data
+			$this->load->view('templates/footer_cashier');
+		}
+	}
+
+
+	public function remove($order,$order_item)
+	{
+		$data['title'] = 'Eliminar elemento.';
+
+		if(isset($_POST['remove']))
+		{
+			$this->OrderModel->delete($order_item);
+			redirect(base_url() . 'cashier/order/items/' . $order);
+		}
+		else
+		{
+			//load header, page & footer
+			$this->load->view('templates/header');
+			$this->load->view('templates/topnav');
+			$this->load->view('orders/index', $data); //loading page and data
+			$this->load->view('templates/footer_cashier');
+		}
+	}
 
 
 
