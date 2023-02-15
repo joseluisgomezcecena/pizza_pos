@@ -33,19 +33,21 @@ class OrderModel extends CI_Model
 		];
 
 		$this->db->insert('order_items', $data);
-		$last_query = $this->db->last_query();
-		print_r($last_query);
-		$this->db->insert_id();
+		//$last_query = $this->db->last_query();
+		//print_r($last_query);
+		$id = $this->db->insert_id();
 
 		foreach ($extras as $extra) {
 			$data = [
-				'oi_id'=>$this->db->insert_id(),
+				'oi_id'=>$id,
 				'extra_ingredient_id'=>$extra,
 				'extra_size_id'=>$size,
 				'price'=>$this->get_price_extra($size, $extra)
 			];
 			$this->db->insert('order_item_extras', $data);
 		}
+
+		return true;
 
 	}
 
@@ -58,6 +60,23 @@ class OrderModel extends CI_Model
 		$this->db->join('sizes', 'sizes.size_id = order_items.size_id');
 		$this->db->where('order_id', $order_id);
 		$query = $this->db->get();
+		return $query->result_array();
+	}
+
+
+	public function get_order_extras($order, $item)
+	{
+		$this->db->select('order_item_extras.*, sizes.size_name, ingredients.ingredient_name');
+		$this->db->from('order_item_extras');
+		$this->db->join('ingredients', 'ingredients.ingredient_id = order_item_extras.extra_ingredient_id');
+		//$this->db->join('extra_ingredients', 'extra_ingredients.extra_ingredient_id = order_item_extras.extra_ingredient_id');
+		$this->db->join('sizes', 'sizes.size_id = order_item_extras.extra_size_id');
+		$this->db->where('oi_id', $item);
+		$query = $this->db->get();
+
+		$last_query = $this->db->last_query();
+		print_r($last_query);
+
 		return $query->result_array();
 	}
 
@@ -117,13 +136,13 @@ class OrderModel extends CI_Model
 
 	public function get_price_extra($size, $extra)
 	{
-		$this->db->select('price');
+		$this->db->select('extra_price');
 		$this->db->from('extras');
 		$this->db->where('size_id', $size);
 		$this->db->where('ingredient_id', $extra);
 		$query = $this->db->get();
 		$result = $query->row_array();
-		return $result['price'];
+		return $result['extra_price'];
 	}
 
 

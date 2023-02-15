@@ -54,38 +54,53 @@
 					<table id="" class="table table-hover">
 						<thead>
 						<tr>
-							<th>Platillo</th>
-							<th>Precio X Cantidad</th>
-							<th>Precio</th>
-							<th>Acciones</th>
+							<th style="width: 35%">Platillo</th>
+							<th style="width: 25%">Precio X Cantidad</th>
+							<th style="width: 25%">Precio</th>
+							<th style="width: 15%">Acciones</th>
 						</tr>
 						</thead>
 						<tbody>
 
+						<?php
+						$extra_suma = 0;
+						?>
+
 						<?php foreach ($order_details as $order_detail): ?>
 							<tr>
-								<td><?php echo $order_detail['item_name'] ?><br><?php echo $order_detail['size_name'] ?></td>
-								<td>$<?php echo $order_detail['price'] ?> X <?php echo $order_detail['qty'] ?></td>
-								<td>$<?php echo $order_detail['price'] *  $order_detail['qty'] ?></td>
+								<td>
+									<?php echo $order_detail['item_name'] ?><br><?php echo $order_detail['size_name'] ?><br>
+									<?php foreach ($order_extras as $order_extra): ?>
+									    <?php
+											echo "<b>Extra:</b>" . $order_extra["ingredient_name"] ." <b class='text-primary' '> +".$order_extra['price']."</b><br>";
+											$extra_suma += $order_extra['price'];
+										?>
+									<?php endforeach; ?>
+								</td>
+								<td>$<?php echo $order_detail['price'] ?> X <?php echo $order_detail['qty'] ?><br>Extras: +<?php echo $extra_suma*$order_detail['qty']; ?></td>
+								<td>$<?php echo $order_detail['price'] *  $order_detail['qty'] ?><br><b>Total: $<?php echo ($order_detail['price'] *  $order_detail['qty'])+($extra_suma * $order_detail['qty'])  ?></b></td>
 								<td>
 
 									<a class="btn btn-dark" href="<?php echo base_url() ?>cashier/order/items/edit/<?php echo $order_detail['oi_id'] ?>"><i class="fa fa-edit text-white"></i></a>
 
-									<?php echo form_open(base_url() . 'orders/remove/' . $order_detail['order_id'] . '/' . $order_detail['oi_id'], array('class' => 'form-inline', 'id' => 'form')) ?>
+									<?php echo form_open(base_url() . 'orders/remove/' . $order_detail['order_id'] . '/' . $order_detail['oi_id'], array('class' => '', 'id' => 'form')) ?>
 										<button class="btn btn-danger" name="remove"><i class="fa fa-trash text-white"></i></button>
 									<?php echo form_close() ?>
 
-									<?php echo form_open(base_url() . 'orders/up/' . $order_detail['order_id'] . '/' . $order_detail['oi_id'],array('class' => 'form-inline', 'id' => 'form')) ?>
+									<?php echo form_open(base_url() . 'orders/up/' . $order_detail['order_id'] . '/' . $order_detail['oi_id'],array('class' => '', 'id' => 'form')) ?>
 										<button class="btn btn-success" name="up"><i class="fa fa-arrow-up text-white"></i></button>
 									<?php echo form_close() ?>
 
-									<?php echo form_open(base_url() . 'orders/down/' . $order_detail['order_id'] . '/' . $order_detail['oi_id'],array('class' => 'form-inline', 'id' => 'form')) ?>
+									<?php echo form_open(base_url() . 'orders/down/' . $order_detail['order_id'] . '/' . $order_detail['oi_id'],array('class' => '', 'id' => 'form')) ?>
 										<button class="btn btn-warning" name="down"><i class="fa fa-arrow-down text-white"></i></button>
 									<?php echo form_close() ?>
 
 								</td>
 							</tr>
-						<?php endforeach; ?>
+						<?php
+
+							endforeach;
+						?>
 
 						</tbody>
 					</table>

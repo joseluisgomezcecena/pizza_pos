@@ -17,6 +17,10 @@ class Orders extends  CI_Controller
 		$data['items'] = $this->ProductModel->getall();
 		$data['client'] = $this->ClientModel->get_client_by_order($order);
 		$data['order_details'] = $this->OrderModel->get_order_items($order);
+
+		$item = $data['order_details'][0]['item_id'];
+		$data['order_extras'] = $this->OrderModel->get_order_extras($order, $item);
+
 		$data['order'] = $order;
 
 		//load header, page & footer
