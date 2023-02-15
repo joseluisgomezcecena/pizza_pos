@@ -34,8 +34,20 @@
 <script src="<?php echo base_url() ?>assets/js/app.min.js"></script>
 
 <script>
-	$('#data-table').DataTable();
+	//$('#data-table').DataTable();
 
+</script>
+
+<script>
+	$('#data-table').DataTable({
+		'scrollX': true,
+		"oLanguage": {
+			"sEmptyTable": "No hay informacion... <a href='<?php echo base_url() ?>request/new' class='btn btn-primary'>Agregar Aqui</a>",
+			"sZeroRecords": "No se encontro el cliente ... <br><br> <a href='<?php echo base_url() ?>clients/add/order' class='btn btn-primary btn-rounded'>Agregar Aqui</a>"
+		}
+		//'bSort': false
+		//'scrollCollapse': true,
+	});
 </script>
 
 <script>

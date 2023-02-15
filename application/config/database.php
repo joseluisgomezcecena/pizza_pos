@@ -79,6 +79,7 @@ $db['default'] = array(
 	'username' => '',
 	'password' => '',
 	'database' => 'db',
+	//'database' => './data/db',
 	'dbdriver' => 'sqlite3',
 	'dbprefix' => '',
 	'pconnect' => FALSE,

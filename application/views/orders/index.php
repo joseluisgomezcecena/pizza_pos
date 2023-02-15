@@ -19,7 +19,7 @@
 		<div class="col-lg-5 mt-5">
 			<div class="card">
 				<div class="card-body">
-					<table id="data-table" class="table">
+					<table style="width: 100%;" id="data-table" class="table">
 						<br><br>
 						<thead>
 						<tr>
@@ -51,7 +51,7 @@
 		<div class="col-lg-7 mt-5">
 			<div class="card">
 				<div class="card-body">
-					<table id="" class="table table-hover">
+					<table style="width: 100%" id="" class="table table-hover">
 						<thead>
 						<tr>
 							<th style="width: 35%">Platillo</th>
