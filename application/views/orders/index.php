@@ -12,10 +12,10 @@
 </style>
 
 
-	<?php //echo form_open(base_url() . 'cashiers/addclient',array('class' => 'mt-5', 'id' => 'form')); ?>
-
 	<div class="container-fluid mt-5 mb-5">
 		<div class="row">
+
+		<!--columna izquierda-->
 		<div class="col-lg-5 mt-5">
 			<div class="card">
 				<div class="card-body">
@@ -47,7 +47,9 @@
 
 			</div>
 		</div>
+		<!--termina columna izquierda-->
 
+		<!--columna derecha-->
 		<div class="col-lg-7 mt-5">
 			<div class="card">
 				<div class="card-body">
@@ -68,15 +70,28 @@
 
 						<?php foreach ($order_details as $order_detail): ?>
 							<tr>
+
 								<td>
 									<?php echo $order_detail['item_name'] ?><br><?php echo $order_detail['size_name'] ?><br>
-									<?php foreach ($order_extras as $order_extra): ?>
-									    <?php
-											echo "<b>Extra:</b>" . $order_extra["ingredient_name"] ." <b class='text-primary' '> +".$order_extra['price']."</b><br>";
-											$extra_suma += $order_extra['price'];
-										?>
+
+									<?php
+									$extras = $controller->get_extras($order_detail['order_id'],$order_detail['oi_id']);
+									foreach ($extras as $extra):
+										echo "<b>Extra:</b>" . $extra["ingredient_name"] ." <b class='text-primary' '> +".$extra['price']."</b><br>";
+										$extra_suma += $extra['price'];
+									?>
 									<?php endforeach; ?>
+
+									<?php //foreach ($order_extras as $order_extra): ?>
+									    <?php
+											//echo "<b>Extra:</b>" . $order_extra["ingredient_name"] ." <b class='text-primary' '> +".$order_extra['price']."</b><br>";
+											//$extra_suma += $order_extra['price'];
+										?>
+									<?php //endforeach; ?>
+
 								</td>
+
+
 								<td>$<?php echo $order_detail['price'] ?> X <?php echo $order_detail['qty'] ?><br>Extras: +<?php echo $extra_suma*$order_detail['qty']; ?></td>
 								<td>$<?php echo $order_detail['price'] *  $order_detail['qty'] ?><br><b>Total: $<?php echo ($order_detail['price'] *  $order_detail['qty'])+($extra_suma * $order_detail['qty'])  ?></b></td>
 								<td>
@@ -111,8 +126,6 @@
 		</div>
 	</div>
 	</div>
-
-	<?php //echo form_close(); ?>
 
 
 

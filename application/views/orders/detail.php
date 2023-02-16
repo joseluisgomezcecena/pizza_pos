@@ -49,7 +49,7 @@
 				<div class="card-body">
 					<h2><?php echo $item['item_name'] ?></h2>
 
-					<p style="font-weight: bolder; font-size: 16px;" ID="price"></p>
+					<p style="font-weight: bolder; font-size: 16px;" id="price"></p>
 
 					<div class="row mt-3">
 						<div class="col">

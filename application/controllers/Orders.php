@@ -14,10 +14,13 @@ class Orders extends  CI_Controller
 	public function neworder($order = NULL)
 	{
 
+		$data['controller'] = $this;
+
 		$item = null;
 		$data['items'] = $this->ProductModel->getall();
 		$data['client'] = $this->ClientModel->get_client_by_order($order);
 		$data['order_details'] = $this->OrderModel->get_order_items($order);
+
 		if(!empty($data['order_details']))
 		{
 			$item = $data['order_details'][0]['item_id'];
@@ -163,6 +166,12 @@ class Orders extends  CI_Controller
 
 
 
+	public function get_extras($order, $item)
+	{
+		$data = $this->OrderModel->get_order_extras($order, $item);
+		return $data;
+	}
+
 
 
 
@@ -171,7 +180,10 @@ class Orders extends  CI_Controller
 	public function getprice()
 	{
 		$size = $this->input->post('size');
-		$price = $this->ProductModel->getprice($size);
+		$item = $this->input->post('item');
+
+		//$price = $this->ProductModel->getprice($size, $item);
+		$price = $this->OrderModel->getprice($size, $item);
 
 		//return  json_encode($price);
 		echo $price;

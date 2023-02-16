@@ -28,13 +28,10 @@ class OrderModel extends CI_Model
 			'item_id'=>$item,
 			'size_id'=>$size,
 			'qty'=>$qty,
-			//'item_extras'=>$extras,
-			'price'=>$this->getprice($size)
+			'price'=>$this->getprice($size, $item)
 		];
 
 		$this->db->insert('order_items', $data);
-		//$last_query = $this->db->last_query();
-		//print_r($last_query);
 		$id = $this->db->insert_id();
 
 		foreach ($extras as $extra) {
@@ -69,13 +66,12 @@ class OrderModel extends CI_Model
 		$this->db->select('order_item_extras.*, sizes.size_name, ingredients.ingredient_name');
 		$this->db->from('order_item_extras');
 		$this->db->join('ingredients', 'ingredients.ingredient_id = order_item_extras.extra_ingredient_id');
-		//$this->db->join('extra_ingredients', 'extra_ingredients.extra_ingredient_id = order_item_extras.extra_ingredient_id');
 		$this->db->join('sizes', 'sizes.size_id = order_item_extras.extra_size_id');
 		$this->db->where('oi_id', $item);
 		$query = $this->db->get();
 
-		$last_query = $this->db->last_query();
-		print_r($last_query);
+		#$last_query = $this->db->last_query();
+		#print_r($last_query);
 
 		return $query->result_array();
 	}
@@ -124,11 +120,12 @@ class OrderModel extends CI_Model
 
 
 	//callback function for get price
-	public function getprice($size)
+	public function getprice($size, $item)
 	{
 		$this->db->select('price');
 		$this->db->from('item_size');
 		$this->db->where('size_id', $size);
+		$this->db->where('item_id', $item);
 		$query = $this->db->get();
 		$result = $query->row_array();
 		return $result['price'];
