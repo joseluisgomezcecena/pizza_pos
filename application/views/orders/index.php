@@ -78,7 +78,7 @@
 									foreach ($extras as $extra):
 										$extra_suma += $extra['price'];
 									?>
-											<b>Extra: <?php  $extra["ingredient_name"] ?></b> <b class="text-primary"><?php echo $extra['price'] ?></b><br>
+											<b>Extra:<br><?php echo $extra["ingredient_name"] ?></b> <b class="text-primary">+ $<?php echo $extra['price'] ?></b><br>
 
 									<?php endforeach; ?>
 								</td>
