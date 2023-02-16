@@ -18,6 +18,10 @@
 					</button>
 				</div>
 			<?php endif; ?>
+
+			<?php echo validation_errors(); ?>
+
+
 		</div>
 	</div>
 

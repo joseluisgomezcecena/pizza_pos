@@ -1,20 +1,14 @@
 <?php
-class Ingredients extends CI_Controller
+class Crusts extends CI_Controller
 {
 	public function index()
 	{
-		$data['title'] = "Ingredientes.";
-		$data['ingredients'] = $this->IngredientModel->get_ingredients();
+		$data['title'] = "Orillas.";
+		$data['orillas'] = $this->CrustModel->get_all();
 
 		$this->form_validation->set_rules(
-			'ingredient_name',
-			'Nombre del Ingrediente.',
-			'required|callback_check_ingredient_exists'
-		);
-
-		$this->form_validation->set_rules(
-			'is_crust',
-			'Orilla.',
+			'crust_name',
+			'Nombre de la orilla.',
 			'required'
 		);
 
@@ -25,14 +19,14 @@ class Ingredients extends CI_Controller
 			$this->load->view('templates/topnav');
 			$this->load->view('templates/sidebar');
 			$this->load->view('templates/wrapper');
-			$this->load->view('ingredients/index', $data); //loading page and data
+			$this->load->view('crusts/index', $data); //loading page and data
 			$this->load->view('templates/footer');
 		}
 		else
 		{
 			$this->IngredientModel->create_ingredient();
-			$this->session->set_flashdata('message', 'El ingrediente ha sido creado.');
-			redirect(base_url() . 'ingredients/index');
+			$this->session->set_flashdata('message', 'El elemento ha sido creado.');
+			redirect(base_url() . 'crusts/index');
 		}
 
 

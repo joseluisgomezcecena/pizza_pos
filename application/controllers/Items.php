@@ -17,6 +17,20 @@ class Items extends CI_Controller
 			$this->form_validation->set_rules($size['size_name'].'_price', 'Precio para '.$size['size_name'], 'required');
 		}
 
+		//set validation style
+		$this->form_validation->set_error_delimiters(
+			'<div class="alert alert-danger alert-dismissible fade show" role="alert">
+					<span class="alert-icon m-r-20 font-size-30">
+						<i class="anticon anticon-close-circle"></i>
+					</span>
+					<strong>Operación fallida</strong>',
+			'<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+					</div>'
+		);
+
+
 		if($this->form_validation->run() === FALSE)
 		{
 			//load header, page & footer

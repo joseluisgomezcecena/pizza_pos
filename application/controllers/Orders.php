@@ -45,7 +45,8 @@ class Orders extends  CI_Controller
 		$data['sizes'] = $this->ProductModel->getsizes($item);
 		$data['ingredients'] = $this->ProductModel->getingredients($item);
 		$data['client'] = $this->ClientModel->get_client_by_order($order);
-		$data['extras'] = $this->ProductModel->getallingredients();
+		//$data['extras'] = $this->ProductModel->getallingredients();
+		$data['extras'] = $this->IngredientModel->get_crusts();
 		$data['order'] = $order;
 		$data['item_id'] = $item;
 

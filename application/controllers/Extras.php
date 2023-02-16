@@ -5,7 +5,7 @@ class Extras extends CI_Controller
 	{
 		$data['title'] = "Extras.";
 		$data['extras'] = $this->ExtraModel->get_extras();
-		$data['ingredients'] = $this->IngredientModel->get_ingredients();
+		$data['ingredients'] = $this->IngredientModel->get_all_ingredients();
 		$data['sizes'] = $this->SizeModel->get_sizes();
 
 		$this->form_validation->set_rules('ingredient_id', 'Ingrediente.', 'required');
