@@ -34,8 +34,6 @@ class Orders extends  CI_Controller
 		//load header, page & footer
 		$this->load->view('templates/header');
 		$this->load->view('templates/topnav');
-		//$this->load->view('templates/sidebar');
-		//$this->load->view('templates/wrapper');
 		$this->load->view('orders/index', $data); //loading page and data
 		$this->load->view('templates/footer_cashier');
 	}
@@ -92,15 +90,49 @@ class Orders extends  CI_Controller
 	}
 
 
-	public function edit($item, $order)
+
+	public function end_and_print($order)
 	{
-		$data['item'] = $this->ProductModel->get($item);
+		$data['title'] = 'Finalizar pedido.';
+		$data['controller'] = $this;
+
+		$item = null;
+		$data['items'] = $this->ProductModel->getall();
+		$data['client'] = $this->ClientModel->get_client_by_order($order);
+		$data['order_details'] = $this->OrderModel->get_order_items($order);
+
+		if(!empty($data['order_details']))
+		{
+			$item = $data['order_details'][0]['item_id'];
+		}
+
+		$data['order_extras'] = $this->OrderModel->get_order_extras($order, $item);
+		$data['order'] = $order;
 
 
-
-		$this->form_validation->set_rules('size', 'Tamaño', 'required');
-		$this->form_validation->set_rules('qty', 'Cantidad', 'required');
+		if(!isset($_POST['end']))
+		{
+			//load header, page & footer
+			$this->load->view('templates/header');
+			$this->load->view('templates/topnav');
+			$this->load->view('orders/receipt', $data); //loading page and data
+			$this->load->view('templates/footer_cashier');
+		}
+		else
+		{
+			$result = $this->OrderModel->end_and_print($order);
+			if($result)
+			{
+				redirect(base_url() . 'cashier/order/items/' . $order);
+			}
+			else
+			{
+				$this->session->set_flashdata('error', 'No se pudo finalizar el pedido.');
+			}
+		}
 	}
+
+
 
 
 	public function up($order, $order_item)
