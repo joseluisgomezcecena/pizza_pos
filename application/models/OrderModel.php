@@ -111,6 +111,20 @@ class OrderModel extends CI_Model
 	}
 
 
+	public function end_order($order)
+	{
+		$this->db->count_all('order_items');
+		$this->db->where('order_id', $order);
+		$query = $this->db->get('order_items');
+		$result = $query->num_rows();
+
+
+		$this->db->set('order_closed', 1, FALSE);
+		$this->db->set('order_qty', $result, FALSE);
+		$this->db->where('order_id', $order);
+		$this->db->update('orders');
+	}
+
 
 
 

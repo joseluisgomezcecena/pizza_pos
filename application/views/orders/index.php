@@ -16,7 +16,9 @@
 	<div class="row">
 
 		<div class="col-lg-12 ">
-			<a href="#" class="btn btn-primary btn-lg btn-rounded mt-5 float-right"><i class="anticon anticon-check"></i> Terminar Orden</a>
+			<?php echo form_open(base_url() . "orders/end_and_print/" . $order);?>
+				<button type="submit" class="btn btn-primary btn-lg btn-rounded mt-5 float-right"><i class="anticon anticon-check"></i> Terminar Orden</button>
+			<?php echo form_close(); ?>
 		</div>
 
 		<!--columna izquierda-->

@@ -93,9 +93,7 @@ class Orders extends  CI_Controller
 
 	public function end_and_print($order)
 	{
-		$data['title'] = 'Finalizar pedido.';
 		$data['controller'] = $this;
-
 		$item = null;
 		$data['items'] = $this->ProductModel->getall();
 		$data['client'] = $this->ClientModel->get_client_by_order($order);
@@ -106,30 +104,18 @@ class Orders extends  CI_Controller
 			$item = $data['order_details'][0]['item_id'];
 		}
 
+
 		$data['order_extras'] = $this->OrderModel->get_order_extras($order, $item);
 		$data['order'] = $order;
 
+		$this->OrderModel->end_order($order);
 
-		if(!isset($_POST['end']))
-		{
-			//load header, page & footer
-			$this->load->view('templates/header');
-			$this->load->view('templates/topnav');
-			$this->load->view('orders/receipt', $data); //loading page and data
-			$this->load->view('templates/footer_cashier');
-		}
-		else
-		{
-			$result = $this->OrderModel->end_and_print($order);
-			if($result)
-			{
-				redirect(base_url() . 'cashier/order/items/' . $order);
-			}
-			else
-			{
-				$this->session->set_flashdata('error', 'No se pudo finalizar el pedido.');
-			}
-		}
+
+		//load header, page & footer
+		$this->load->view('templates/header');
+		//$this->load->view('templates/topnav');
+		$this->load->view('orders/receipt', $data); //loading page and data
+		//$this->load->view('templates/footer_cashier');
 	}
 
 
