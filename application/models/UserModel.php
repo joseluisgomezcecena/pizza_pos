@@ -10,13 +10,9 @@ class UserModel extends CI_Model{
 	public function register($encrypted_pwd)
 	{
 		$data = array(
-			'user_name'=>$this->input->post('user_name'),
-			'email'=>$this->input->post('email'),
-			'user_department_id'=>$this->input->post('user_department_id'),
-			'password'=>$encrypted_pwd,
-			'user_martech_number'=>$this->input->post('user_martech_number'),
+			'user_name'=>$this->input->post('username'),
+			'user_password'=>$encrypted_pwd,
 		);
-
 		return $this->db->insert('users', $data);
 	}
 
@@ -25,14 +21,10 @@ class UserModel extends CI_Model{
 	{
 		$data = array(
 			'user_name'=>$this->input->post('user_name'),
-			'email'=>$this->input->post('email'),
-			'user_department_id'=>$this->input->post('user_department_id'),
 			'password'=>$encrypted_pwd,
-			'user_martech_number'=>$this->input->post('user_martech_number'),
 		);
 
 		return $this->db->update('users', $data, array('user_id'=>$id));
-		//return $this->db->insert('users', $data);
 	}
 
 
@@ -72,17 +64,11 @@ class UserModel extends CI_Model{
 
 	public function login($username, $password)
 	{
-		$authdb = $this->load->database('authdb', TRUE);
 
-
-		$authdb->select('*');
-		$authdb->from('users');
-		$authdb->where('user_email', $username);
-		$authdb->where('user_department_id', '1');
-		$query = $authdb->get();
-
-		$last_query = $authdb->last_query();
-		print_r($last_query);
+		$this->db->select('*');
+		$this->db->from('users');
+		$this->db->where('user_name', $username);
+		$query = $this->db->get();
 
 		$result = $query->row_array();
 

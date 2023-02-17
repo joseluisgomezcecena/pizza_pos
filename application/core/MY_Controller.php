@@ -10,7 +10,7 @@ class MY_Controller extends CI_Controller {
 		$CI->load->helper('url');
 		if ( !$this->session->userdata('logged_in'))
 		{
-			redirect(base_url() . 'users/login');
+			redirect(base_url() . 'auth/login');
 		}
 	}
 }

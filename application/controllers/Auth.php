@@ -20,7 +20,7 @@ class Auth extends CI_Controller{
 		{
 			$this->load->view('templates/header',$data);
 			$this->load->view('auth/login', $data); //loading page and data
-			$this->load->view('templates/footer_wide');
+			$this->load->view('templates/footer');
 		}
 		else
 		{
@@ -75,14 +75,11 @@ class Auth extends CI_Controller{
 
 	public function register()
 	{
-		$data['title'] = 'Registro de inspeccion final';
-		$data['departments'] = $this->InsertPartsModel->get_departments();
+		$data['title'] = 'Registro de usuario | Pizza POS v1.0.';
 
-		$this->form_validation->set_rules('user_name', 'Usuario o Firma Martech', 'required|callback_check_username_exists');
-		$this->form_validation->set_rules('email', 'Email', 'required|callback_check_email_exists');
-		$this->form_validation->set_rules('password', 'Contraseña', 'required');
-		$this->form_validation->set_rules('user_martech_number', 'Numero de usuario', 'required');
-		$this->form_validation->set_rules('user_department_id', 'Department', 'required');
+		$this->form_validation->set_rules('username', 'Nombre de usuario', 'required|callback_check_username_exists');
+		$this->form_validation->set_rules('password', 'Correo electrónico', 'required|min_length[6]');
+		$this->form_validation->set_rules('password2', 'Confirmar contraseña', 'matches[password]');
 
 		$this->form_validation->set_error_delimiters(
 			'<div class="alert alert-danger alert-dismissible fade show" role="alert"><strong class="uppercase"><bdi>Error!: </bdi></strong> &nbsp;',
@@ -93,7 +90,7 @@ class Auth extends CI_Controller{
 		if($this->form_validation->run() === FALSE)
 		{
 			$this->load->view('templates/header');
-			$this->load->view('users/register', $data);
+			$this->load->view('auth/register', $data);
 			$this->load->view('templates/footer');
 		}
 		else
@@ -101,15 +98,14 @@ class Auth extends CI_Controller{
 			//Encrypt password
 			$encrypted_pwd = password_hash($this->input->post('password'), PASSWORD_DEFAULT);
 
-
-
+			//Call register method from UserModel
 			$this->UserModel->register($encrypted_pwd);
 
 
 			//session message
-			$this->session->set_flashdata('user_registered', 'You can now login.');
+			$this->session->set_flashdata('message', $this->input->post('username') . ' Ha sido registrado.');
 
-			redirect(base_url() . 'users/register');
+			redirect(base_url() . 'auth/register');
 		}
 
 	}
