@@ -3,7 +3,7 @@
 		<div class="col-lg-6 offset-3 text-center">
 			<?php if($this->session->flashdata('errors')): ?>
 				<div class="alert alert-danger alert-dismissible fade show" role="alert">
-					<strong>🔒 Error de autenticación</strong>
+					<strong>Error de autenticación</strong>
 					<?php echo $this->session->flashdata('errors'); ?>.
 					<button type="button" class="close" data-dismiss="alert" aria-label="Close">
 						<span aria-hidden="true">&times;</span>
@@ -33,7 +33,10 @@
 					</div>
 					<div class="form-group">
 						<label class="font-weight-semibold" for="password">Contraseña:</label>
+						<!--
 						<a class="float-right font-size-13 text-muted" href="#">Olvidaste tu contraseña?</a>
+						-->
+
 						<div class="input-affix m-b-10">
 							<i class="prefix-icon anticon anticon-lock"></i>
 							<input type="password" class="form-control" id="password" name="password" placeholder="Tu contraseña">
@@ -41,10 +44,6 @@
 					</div>
 					<div class="form-group">
 						<div class="d-flex align-items-center justify-content-between">
-                                                <span class="font-size-13 text-muted">
-                                                    No tienes cuenta?
-                                                    <a class="small" href="#"> Registrate</a>
-                                                </span>
 							<button type="submit" class="btn btn-primary">Ingresar</button>
 						</div>
 					</div>

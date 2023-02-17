@@ -12,15 +12,15 @@ class Auth extends CI_Controller{
 
 
 		$this->form_validation->set_error_delimiters(
-			'<div class="alert alert-danger alert-dismissible fade show" role="alert"><strong>❌ Error de autenticación: &nbsp;</strong>',
+			'<div class="alert alert-danger alert-dismissible fade show" role="alert"><strong>Error de autenticación: &nbsp;</strong>',
 			'<button type="button" class="close" data-dismiss="alert" aria-label="Close"> <span aria-hidden="true">&times;</span></button></div>'
 		);
 
 		if($this->form_validation->run() === FALSE)
 		{
-			$this->load->view('templates/main/header',$data);
+			$this->load->view('templates/header',$data);
 			$this->load->view('auth/login', $data); //loading page and data
-			$this->load->view('templates/main/footer_wide');
+			$this->load->view('templates/footer_wide');
 		}
 		else
 		{

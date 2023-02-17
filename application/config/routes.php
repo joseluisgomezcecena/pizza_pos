@@ -79,7 +79,10 @@ $route['cashier/order/items/complete/(:any)'] = 'orders/completeorder/$1';
 //ajax routes
 $route['ajaxprice'] = 'orders/getprice';
 
-
+/* AUTHENTICATION ROUTES */
+$route['auth/login'] = 'auth/login';
+$route['auth/logout'] = 'auth/logout';
+$route['auth/register'] = 'auth/register';
 
 
 
