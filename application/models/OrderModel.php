@@ -45,7 +45,38 @@ class OrderModel extends CI_Model
 		}
 
 		return true;
+	}
 
+
+	public function get_orders()
+	{
+		$this->db->select('orders.*, clients.client_name');
+		$this->db->from('orders');
+		$this->db->join('clients', 'clients.client_id = orders.client_id');
+		$this->db->where('orders.order_closed', 1);
+		$this->db->limit(10);
+		$query = $this->db->get();
+		return $query->result_array();
+	}
+
+
+	public function get_panels()
+	{
+		$this->db->select('order_total');
+		$this->db->from('orders');
+		$this->db->where('order_closed', 1);
+		$this->db->where('created_at >=', date('Y-m-d 00:00:00'));
+		$this->db->where('created_at <=', date('Y-m-d 23:59:59'));
+		$query = $this->db->get();
+		$orders = $query->result_array();
+		$panels = [];
+		$panels['total'] = 0;
+		$panels['count'] = 0;
+		foreach ($orders as $order) {
+			$panels['total'] += $order['order_total'];
+			$panels['count']++;
+		}
+		return $panels;
 	}
 
 
@@ -121,6 +152,7 @@ class OrderModel extends CI_Model
 
 		$this->db->set('order_closed', 1, FALSE);
 		$this->db->set('order_qty', $result, FALSE);
+		$this->db->set('order_total', $this->input->post('order_total'), FALSE);
 		$this->db->where('order_id', $order);
 		$this->db->update('orders');
 	}
@@ -144,6 +176,7 @@ class OrderModel extends CI_Model
 		$result = $query->row_array();
 		return $result['price'];
 	}
+
 
 	public function get_price_extra($size, $extra)
 	{

@@ -5,7 +5,7 @@
 			<div class="card-body">
 				<div class="d-flex justify-content-between align-items-center">
 					<div>
-						<p class="m-b-0">Net Revenue</p>
+						<p class="m-b-0">Ventas</p>
 						<h2 class="m-b-0">
 							<span>$14,966</span>
 						</h2>
@@ -82,9 +82,9 @@
 		<div class="card">
 			<div class="card-body">
 				<div class="d-flex justify-content-between align-items-center">
-					<h5>Latest Transactions</h5>
+					<h5>Ultimas Transacciones</h5>
 					<div>
-						<a href="javascript:void(0);" class="btn btn-sm btn-default">View All</a>
+						<a href="#" class="btn btn-sm btn-default">Ver Todo</a>
 					</div>
 				</div>
 				<div class="m-t-30">
@@ -93,118 +93,42 @@
 							<thead>
 							<tr>
 								<th>ID</th>
-								<th>Customer</th>
-								<th>Date</th>
-								<th>Amount</th>
+								<th>Cliente</th>
+								<th>Productos</th>
+								<th>Total</th>
 								<th>Status</th>
 							</tr>
 							</thead>
 							<tbody>
-							<tr>
-								<td>#5331</td>
-								<td>
-									<div class="d-flex align-items-center">
-										<div class="d-flex align-items-center">
-											<div class="avatar avatar-image" style="height: 30px; min-width: 30px; max-width:30px">
-												<img src="assets/images/avatars/thumb-1.jpg" alt="">
-											</div>
-											<h6 class="m-l-10 m-b-0">Erin Gonzales</h6>
+							<?php foreach ($orders as $order): ?>
+
+								<tr>
+									<td>
+										<div class="avatar avatar-image" style="height: 30px; min-width: 30px; max-width:30px">
+											<img src="<?php echo base_url() ?>assets/img/2094661.png" alt="">
 										</div>
-									</div>
-								</td>
-								<td>8 May 2019</td>
-								<td>$137.00</td>
-								<td>
-									<div class="d-flex align-items-center">
-										<span class="badge badge-success badge-dot m-r-10"></span>
-										<span>Approved</span>
-									</div>
-								</td>
-							</tr>
-							<tr>
-								<td>#5375</td>
-								<td>
-									<div class="d-flex align-items-center">
+										#<?php echo $order['order_id'] ?>
+									</td>
+									<td>
 										<div class="d-flex align-items-center">
-											<div class="avatar avatar-image" style="height: 30px; min-width: 30px; max-width:30px">
-												<img src="assets/images/avatars/thumb-2.jpg" alt="">
+											<div class="d-flex align-items-center">
+
+												<h6 class="m-l-10 m-b-0"><?php echo $order['client_name'] ?></h6>
 											</div>
-											<h6 class="m-l-10 m-b-0">Darryl Day</h6>
 										</div>
-									</div>
-								</td>
-								<td>6 May 2019</td>
-								<td>$322.00</td>
-								<td>
-									<div class="d-flex align-items-center">
-										<span class="badge badge-success badge-dot m-r-10"></span>
-										<span>Approved</span>
-									</div>
-								</td>
-							</tr>
-							<tr>
-								<td>#5762</td>
-								<td>
-									<div class="d-flex align-items-center">
+									</td>
+									<td><?php echo $order['order_qty'] ?></td>
+									<td>$<?php echo $order['order_total'] ?></td>
+									<td>
 										<div class="d-flex align-items-center">
-											<div class="avatar avatar-image" style="height: 30px; min-width: 30px; max-width:30px">
-												<img src="assets/images/avatars/thumb-3.jpg" alt="">
-											</div>
-											<h6 class="m-l-10 m-b-0">Marshall Nichols</h6>
+											<span class="badge badge-success badge-dot m-r-10"></span>
+											<span>Terminada</span>
 										</div>
-									</div>
-								</td>
-								<td>1 May 2019</td>
-								<td>$543.00</td>
-								<td>
-									<div class="d-flex align-items-center">
-										<span class="badge badge-success badge-dot m-r-10"></span>
-										<span>Approved</span>
-									</div>
-								</td>
-							</tr>
-							<tr>
-								<td>#5865</td>
-								<td>
-									<div class="d-flex align-items-center">
-										<div class="d-flex align-items-center">
-											<div class="avatar avatar-image" style="height: 30px; min-width: 30px; max-width:30px">
-												<img src="assets/images/avatars/thumb-4.jpg" alt="">
-											</div>
-											<h6 class="m-l-10 m-b-0">Virgil Gonzales</h6>
-										</div>
-									</div>
-								</td>
-								<td>28 April 2019</td>
-								<td>$876.00</td>
-								<td>
-									<div class="d-flex align-items-center">
-										<span class="badge badge-primary badge-dot m-r-10"></span>
-										<span>Pending</span>
-									</div>
-								</td>
-							</tr>
-							<tr>
-								<td>#5213</td>
-								<td>
-									<div class="d-flex align-items-center">
-										<div class="d-flex align-items-center">
-											<div class="avatar avatar-image" style="height: 30px; min-width: 30px; max-width:30px">
-												<img src="assets/images/avatars/thumb-5.jpg" alt="">
-											</div>
-											<h6 class="m-l-10 m-b-0">Nicole Wyne</h6>
-										</div>
-									</div>
-								</td>
-								<td>28 April 2019</td>
-								<td>$241.00</td>
-								<td>
-									<div class="d-flex align-items-center">
-										<span class="badge badge-success badge-dot m-r-10"></span>
-										<span>Approved</span>
-									</div>
-								</td>
-							</tr>
+									</td>
+								</tr>
+
+							<?php endforeach; ?>
+
 							</tbody>
 						</table>
 					</div>

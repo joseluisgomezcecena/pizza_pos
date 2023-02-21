@@ -10,15 +10,15 @@
 		.call-to-action h1{font-size:25px;}
 	}
 </style>
-
+<?php echo form_open(base_url() . "orders/end_and_print/" . $order);?>
 
 <div class="container-fluid mt-5 mb-5">
 	<div class="row">
 
 		<div class="col-lg-12 ">
-			<?php echo form_open(base_url() . "orders/end_and_print/" . $order);?>
+
+
 				<button type="submit" class="btn btn-primary btn-lg btn-rounded mt-5 float-right"><i class="anticon anticon-check"></i> Terminar Orden</button>
-			<?php echo form_close(); ?>
 		</div>
 
 		<!--columna izquierda-->
@@ -67,6 +67,7 @@
 
 						<?php
 						$extra_suma = 0;
+						$total_suma = 0;
 						?>
 
 						<?php foreach ($order_details as $order_detail): ?>
@@ -92,7 +93,7 @@
 								</td>
 
 
-								<td>$<?php echo $order_detail['price'] *  $order_detail['qty'] ?><br><b>Total: $<?php echo ($order_detail['price'] *  $order_detail['qty'])+($extra_suma * $order_detail['qty'])  ?></b></td>
+								<td>$<?php echo $order_detail['price'] *  $order_detail['qty'] ?><br><b>Total: $<?php echo $total = ($order_detail['price'] *  $order_detail['qty'])+($extra_suma * $order_detail['qty'])  ?></b></td>
 								<td>
 
 									<a class="btn btn-dark" href="<?php echo base_url() ?>cashier/order/items/edit/<?php echo $order_detail['oi_id'] ?>"><i class="fa fa-edit text-white"></i></a>
@@ -112,6 +113,7 @@
 								</td>
 							</tr>
 						<?php
+							$total_suma += $total;
 							$extra_suma = 0;
 							endforeach;
 						?>
@@ -122,6 +124,8 @@
 		</div>
 	</div>
 </div>
+<input type="hidden" name="order_total" value="<?php echo $total_suma; ?>">
+<?php echo form_close(); ?>
 
 
 
