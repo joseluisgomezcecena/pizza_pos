@@ -43,7 +43,7 @@
 		'scrollX': true,
 		"oLanguage": {
 			"sEmptyTable": "No hay informacion... <a href='<?php echo base_url() ?>request/new' class='btn btn-primary'>Agregar Aqui</a>",
-			"sZeroRecords": "No se encontro el cliente ... <br><br> <a href='<?php echo base_url() ?>clients/add/order' class='btn btn-primary btn-rounded'>Agregar Aqui</a>"
+			"sZeroRecords": "No se encontro el cliente ... <br><br> <a href='<?php echo base_url() ?>cashier/clients/add/next' class='btn btn-primary btn-rounded'>Agregar Aqui</a>"
 		}
 		//'bSort': false
 		//'scrollCollapse': true,

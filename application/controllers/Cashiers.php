@@ -16,9 +16,10 @@ class Cashiers extends CI_Controller
 
 
 
-	public function addclient($neworder = NULL)
+	public function addclient($param = NULL)
 	{
 		$data['title'] = "Agregar Cliente";
+		$data['param'] = $param;
 
 		$this->form_validation->set_rules('name', 'name', 'required');
 
@@ -43,13 +44,13 @@ class Cashiers extends CI_Controller
 			$client_id = $this->ClientModel->store();
 			$this->session->set_flashdata('message', 'Se ha guardado el cliente.');
 
-			if ($neworder)
+			if ($param == 'next')
 			{
 				redirect(base_url() . 'cashier/order/' . $client_id);
 			}
-			else
+			elseif ($param == 'new')
 			{
-				redirect(base_url() . 'cashiers/addclient');
+				redirect(base_url() . 'cashiers/addclient/new');
 			}
 		}
 	}

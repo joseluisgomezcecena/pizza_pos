@@ -1,4 +1,4 @@
-<?php echo form_open(base_url() . 'cashiers/addclient'); ?>
+<?php echo form_open(base_url() . 'cashiers/addclient/' . $param); ?>
 	<div class="row">
 		<div class="col">
 			<?php if ($this->session->flashdata('message')): ?>
