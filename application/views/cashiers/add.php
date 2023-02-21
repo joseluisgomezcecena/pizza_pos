@@ -1,6 +1,24 @@
 <?php echo form_open(base_url() . 'cashiers/addclient'); ?>
 	<div class="row">
 		<div class="col">
+			<?php if ($this->session->flashdata('message')): ?>
+				<?php if($this->session->flashdata('message')): ?>
+					<div class="alert alert-success alert-dismissible fade show" role="alert">
+					<span class="alert-icon m-r-20 font-size-30">
+						<i class="anticon anticon-check-circle"></i>
+					</span>
+						<strong>Operación Exitosa</strong>
+						<?php echo $this->session->flashdata('message'); ?>
+						<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+							<span aria-hidden="true">&times;</span>
+						</button>
+					</div>
+				<?php endif; ?>
+			<?php endif; ?>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col">
 			<label for="">Nombre</label>
 			<input type="text" class="form-control" name="name" placeholder="Nombre">
 		</div>

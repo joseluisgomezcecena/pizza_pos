@@ -10,15 +10,13 @@ class Cashiers extends CI_Controller
 		//load header, page & footer
 		$this->load->view('templates/header');
 		$this->load->view('templates/topnav');
-		//$this->load->view('templates/sidebar');
-		//$this->load->view('templates/wrapper');
 		$this->load->view('cashiers/index', $data); //loading page and data
 		$this->load->view('templates/footer_cashier');
 	}
 
 
 
-	public function addclient()
+	public function addclient($neworder = NULL)
 	{
 		$data['title'] = "Agregar Cliente";
 
@@ -42,11 +40,18 @@ class Cashiers extends CI_Controller
 		}
 		else
 		{
-			$this->ClientModel->store();
-			$this->session->set_flashdata('created', 'Se ha guardado el cliente.');
-			redirect(base_url() . 'cashiers/addclient');
-		}
+			$client_id = $this->ClientModel->store();
+			$this->session->set_flashdata('message', 'Se ha guardado el cliente.');
 
+			if ($neworder)
+			{
+				redirect(base_url() . 'cashier/order/' . $client_id);
+			}
+			else
+			{
+				redirect(base_url() . 'cashiers/addclient');
+			}
+		}
 	}
 
 

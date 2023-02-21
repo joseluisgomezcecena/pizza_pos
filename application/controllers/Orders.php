@@ -3,7 +3,7 @@ class Orders extends  CI_Controller
 {
 
 	//creating an order on button click and redirecting to order detail.
-	public function createOrder($id)
+	public function createOrder($id)//passing client id
 	{
 		$order_no = $this->OrderModel->newOrder($id);
 		redirect(base_url() . 'cashier/order/items/' . $order_no);
