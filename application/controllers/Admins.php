@@ -6,6 +6,8 @@ class Admins extends MY_Controller
 		$data['title'] = "Administrador.";
 
 		$data['orders'] = $this->OrderModel->get_orders();
+		$data['panels'] = $this->OrderModel->get_panels('day');
+		$data['panels_month'] = $this->OrderModel->get_panels('month');
 
 		$this->load->view('templates/header');
 		$this->load->view('templates/topnav');

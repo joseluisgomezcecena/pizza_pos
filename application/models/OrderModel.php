@@ -60,13 +60,31 @@ class OrderModel extends CI_Model
 	}
 
 
-	public function get_panels()
+	public function get_panels($params = NULL)
 	{
+		if ($params == 'today')
+		{
+			$this->db->where('created_at >=', date('Y-m-d 00:00:00'));
+			$this->db->where('created_at <=', date('Y-m-d 23:59:59'));
+		}
+
+		if($params == 'week')
+		{
+			$this->db->where('created_at >=', date('Y-m-d 00:00:00', strtotime('monday this week')));
+			$this->db->where('created_at <=', date('Y-m-d 23:59:59', strtotime('sunday this week')));
+		}
+
+		if ($params == 'month')
+		{
+			$this->db->where('created_at >=', date('Y-m-01 00:00:00'));
+			$this->db->where('created_at <=', date('Y-m-t 23:59:59'));
+		}
+
 		$this->db->select('order_total');
 		$this->db->from('orders');
 		$this->db->where('order_closed', 1);
-		$this->db->where('created_at >=', date('Y-m-d 00:00:00'));
-		$this->db->where('created_at <=', date('Y-m-d 23:59:59'));
+		//$this->db->where('created_at >=', date('Y-m-d 00:00:00'));
+		//$this->db->where('created_at <=', date('Y-m-d 23:59:59'));
 		$query = $this->db->get();
 		$orders = $query->result_array();
 		$panels = [];
