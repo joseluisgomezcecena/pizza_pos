@@ -40,7 +40,10 @@
 						<a href="<?php echo base_url() ?>admin/sizes">Medidas</a>
 					</li>
 					<li>
-						<a href="<?php echo base_url() ?>admin/items">Platillos</a>
+						<a href="<?php echo base_url() ?>admin/items">Pizzas</a>
+					</li>
+					<li>
+						<a href="<?php echo base_url() ?>admin/sides">Platillos</a>
 					</li>
 					<li>
 						<a href="<?php echo base_url() ?>admin/extras">Extras</a>

@@ -107,9 +107,14 @@ $route['admin/extras/edit/(:any)'] = 'extras/edit/$1';
 $route['admin/extras/delete/(:any)'] = 'extras/delete/$1';
 
 //menu items
-$route['admin/items'] = 'items/index';
-$route['admin/items/edit/(:any)'] = 'items/edit/$1';
-$route['admin/items/delete/(:any)'] = 'items/delete/$1';
+$route['admin/items'] = 'items/index';//pizzas
+$route['admin/items/edit/(:any)'] = 'items/edit/$1';//pizzas
+$route['admin/items/delete/(:any)'] = 'items/delete/$1';//pizzas
+
+//menu items
+$route['admin/sides'] = 'sides/index';//sides
+$route['admin/sides/edit/(:any)'] = 'sides/edit/$1';//sides
+$route['admin/sides/delete/(:any)'] = 'sides/delete/$1';//sides
 
 
 /* PAGES ROUTES */
