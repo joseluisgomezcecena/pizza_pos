@@ -94,7 +94,13 @@ class OrderModel extends CI_Model
 			$panels['total'] += $order['order_total'];
 			$panels['count']++;
 		}
-		return $panels;
+
+		$data = [
+			'orders'=>$panels['count'],
+			'total'=>$panels['total']
+		];
+
+		return $data;
 	}
 
 

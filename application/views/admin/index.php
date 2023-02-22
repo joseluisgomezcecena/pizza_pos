@@ -5,9 +5,28 @@
 			<div class="card-body">
 				<div class="d-flex justify-content-between align-items-center">
 					<div>
-						<p class="m-b-0">Ventas</p>
+						<p class="m-b-0">Ordenes Hoy</p>
 						<h2 class="m-b-0">
-							<span>$14,966</span>
+							<span><?php echo $panels['orders'] ?></span>
+						</h2>
+					</div>
+					<div class="avatar avatar-icon avatar-lg avatar-blue">
+						<i class="anticon anticon-ordered-list"></i>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!--end col-->
+	<!--col-->
+	<div class="col-md-6 col-lg-3">
+		<div class="card">
+			<div class="card-body">
+				<div class="d-flex justify-content-between align-items-center">
+					<div>
+						<p class="m-b-0">Ventas Hoy</p>
+						<h2 class="m-b-0">
+							<span>$<?php echo $panels['total'] ?></span>
 						</h2>
 					</div>
 					<div class="avatar avatar-icon avatar-lg avatar-blue">
@@ -24,13 +43,13 @@
 			<div class="card-body">
 				<div class="d-flex justify-content-between align-items-center">
 					<div>
-						<p class="m-b-0">Net Revenue</p>
+						<p class="m-b-0">Ordenes Mes</p>
 						<h2 class="m-b-0">
-							<span>$14,966</span>
+							<span><?php echo $panels_month['orders'] ?></span>
 						</h2>
 					</div>
 					<div class="avatar avatar-icon avatar-lg avatar-blue">
-						<i class="anticon anticon-dollar"></i>
+						<i class="anticon anticon-ordered-list"></i>
 					</div>
 				</div>
 			</div>
@@ -43,28 +62,9 @@
 			<div class="card-body">
 				<div class="d-flex justify-content-between align-items-center">
 					<div>
-						<p class="m-b-0">Net Revenue</p>
+						<p class="m-b-0">Ventas Mes</p>
 						<h2 class="m-b-0">
-							<span>$14,966</span>
-						</h2>
-					</div>
-					<div class="avatar avatar-icon avatar-lg avatar-blue">
-						<i class="anticon anticon-dollar"></i>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-	<!--end col-->
-	<!--col-->
-	<div class="col-md-6 col-lg-3">
-		<div class="card">
-			<div class="card-body">
-				<div class="d-flex justify-content-between align-items-center">
-					<div>
-						<p class="m-b-0">Net Revenue</p>
-						<h2 class="m-b-0">
-							<span>$14,966</span>
+							<span>$<?php echo $panels_month['total'] ?></span>
 						</h2>
 					</div>
 					<div class="avatar avatar-icon avatar-lg avatar-blue">
@@ -104,9 +104,11 @@
 
 								<tr>
 									<td>
+										<!--
 										<div class="avatar avatar-image" style="height: 30px; min-width: 30px; max-width:30px">
-											<img src="<?php echo base_url() ?>assets/img/2094661.png" alt="">
+											<span style="font-size: 24px; margin-top: -10px;">🍕</span>
 										</div>
+										-->
 										#<?php echo $order['order_id'] ?>
 									</td>
 									<td>
