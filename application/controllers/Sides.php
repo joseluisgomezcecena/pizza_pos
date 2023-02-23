@@ -6,8 +6,7 @@ class Sides extends CI_Controller
 		$data['controller'] = $this;
 
 		$data['title'] = "Items.";
-		$data['items'] = $this->ItemModel->index();
-		$data['ingredients'] = $this->IngredientModel->get_ingredients();
+		$data['items'] = $this->ItemModel->index(0);
 		$data['sizes'] = $this->SizeModel->get_sizes();
 
 		$this->form_validation->set_rules('item_name', 'Nombre del item.', 'required');
@@ -38,12 +37,12 @@ class Sides extends CI_Controller
 			$this->load->view('templates/topnav');
 			$this->load->view('templates/sidebar');
 			$this->load->view('templates/wrapper');
-			$this->load->view('items/index', $data); //loading page and data
+			$this->load->view('sides/index', $data); //loading page and data
 			$this->load->view('templates/footer');
 		}
 		else
 		{
-			$this->ItemModel->create($data['sizes']);
+			$this->ItemModel->create($data['sizes'], 0);
 			$this->session->set_flashdata('message', 'El platillo ha sido creado.');
 			redirect(base_url() . 'items/index');
 		}

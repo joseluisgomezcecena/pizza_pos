@@ -6,7 +6,7 @@ class Items extends CI_Controller
 		$data['controller'] = $this;
 
 		$data['title'] = "Items.";
-		$data['items'] = $this->ItemModel->index();
+		$data['items'] = $this->ItemModel->index(1);
 		$data['ingredients'] = $this->IngredientModel->get_ingredients();
 		$data['sizes'] = $this->SizeModel->get_sizes();
 
@@ -43,7 +43,7 @@ class Items extends CI_Controller
 		}
 		else
 		{
-			$this->ItemModel->create($data['sizes']);
+			$this->ItemModel->create($data['sizes'], 1);
 			$this->session->set_flashdata('message', 'El platillo ha sido creado.');
 			redirect(base_url() . 'items/index');
 		}

@@ -6,9 +6,9 @@ class ItemModel extends CI_Model
 		$this->load->database();
 	}
 
-	public function index()
+	public function index($is_pizza = NULL)
 	{
-		$query = $this->db->get('items');
+		$query = $this->db->get_where('items', array('is_pizza' => $is_pizza));
 		return $query->result_array();
 	}
 
@@ -52,39 +52,43 @@ class ItemModel extends CI_Model
 
 
 
-	public function create($sizes)
+	public function create($sizes, $is_pizza)
 	{
 		/*********** INSERT INTO ITEMS ***********/
 		$data = array(
 			'item_name' => $this->input->post('item_name'),
+			'is_pizza' => $is_pizza,
 		);
 		$this->db->insert('items', $data);
 		$id = $this->db->insert_id();
 
-		/*********** Insert last id ITEM_SIZE ***********/
-		foreach ($sizes as $size)
+		if ($is_pizza == 1)
 		{
-			$data = array(
-				'item_id' => $id,
-				'price' => $this->input->post($size['size_name'].'_price'),
-				'size_id' => $size['size_id'],
-			);
+			/*********** Insert last id ITEM_SIZE ***********/
+			foreach ($sizes as $size)
+			{
+				$data = array(
+					'item_id' => $id,
+					'price' => $this->input->post($size['size_name'].'_price'),
+					'size_id' => $size['size_id'],
+				);
 
-			$this->db->insert('item_size', $data);
+				$this->db->insert('item_size', $data);
+			}
+
+			//insertinto item_ingredient
+			$ingredients = $this->input->post('ingredient_id');
+			foreach ($ingredients as $ingredient)
+			{
+				$data = array(
+					'item_id' => $id,
+					'ingredient_id' => $ingredient,
+				);
+
+				$this->db->insert('item_ingredient', $data);
+			}
+
 		}
-
-		//insertinto item_ingredient
-		$ingredients = $this->input->post('ingredient_id');
-		foreach ($ingredients as $ingredient)
-		{
-			$data = array(
-				'item_id' => $id,
-				'ingredient_id' => $ingredient,
-			);
-
-			$this->db->insert('item_ingredient', $data);
-		}
-
 	}
 
 
