@@ -35,15 +35,20 @@
 				</div>
 			</div>
 
-			<?php echo form_open(base_url() . 'items/index') ?>
+			<?php echo form_open(base_url() . 'sides/index') ?>
 
 				<div class="row">
-					<div class="form-group col-lg-12">
+					<div class="form-group col-lg-6">
 						<label for="inputPassword2" class="sr-only">Nombre del platillo</label>
 						<input type="text" class="form-control" name="item_name"  id="name" placeholder="Ej. Pizza de Pepperoni.">
 					</div>
 
-				
+					<div class="form-group col-lg-6">
+						<label for="inputPassword2" class="sr-only">Price</label>
+						<input type="number" class="form-control" name="side_price"  id="name" placeholder="Precio">
+					</div>
+
+
 					<div class="col mt-5 mb-5">
 						<button type="submit" class="btn btn-primary mb-2 float-right">Guardar</button>
 					</div>
@@ -74,7 +79,6 @@
 						<td><?php echo $item['item_name'] ?></td>
 						<td>
 							<?php
-							//$item_details  = Items::item_details($item['item_id']);
 							$item_details=$controller->item_details($item['item_id']);
 							foreach ($item_details as $row):
 								echo $row['price']  . '<br>';
@@ -82,8 +86,8 @@
 							?>
 						</td>
 						<td>
-							<a href="<?php echo base_url() . 'items/edit/' . $item['item_id'] ?>" class="btn btn-primary btn-sm">Editar</a>
-							<a href="<?php echo base_url() . 'items/delete/' . $item['item_id'] ?>" class="btn btn-danger btn-sm">Eliminar</a>
+							<a href="<?php echo base_url() . 'sides/edit/' . $item['item_id'] ?>" class="btn btn-primary btn-sm">Editar</a>
+							<a href="<?php echo base_url() . 'sides/delete/' . $item['item_id'] ?>" class="btn btn-danger btn-sm">Eliminar</a>
 						</td>
 					</tr>
 

@@ -89,6 +89,16 @@ class ItemModel extends CI_Model
 			}
 
 		}
+		else
+		{
+			$data = array(
+				'item_id' => $id,
+				'price' => $this->input->post('side_price'),
+				'size_id' => 0,
+			);
+
+			$this->db->insert('item_size', $data);
+		}
 	}
 
 

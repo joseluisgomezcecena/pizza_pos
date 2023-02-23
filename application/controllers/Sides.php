@@ -10,11 +10,7 @@ class Sides extends CI_Controller
 		$data['sizes'] = $this->SizeModel->get_sizes();
 
 		$this->form_validation->set_rules('item_name', 'Nombre del item.', 'required');
-
-		foreach ($data['sizes'] as $size)
-		{
-			$this->form_validation->set_rules($size['size_name'].'_price', 'Precio para '.$size['size_name'], 'required');
-		}
+		$this->form_validation->set_rules('side_price', 'Precio del platillo.', 'required');
 
 		//set validation style
 		$this->form_validation->set_error_delimiters(
@@ -22,7 +18,7 @@ class Sides extends CI_Controller
 					<span class="alert-icon m-r-20 font-size-30">
 						<i class="anticon anticon-close-circle"></i>
 					</span>
-					<strong>Operación fallida</strong>',
+					<strong>Operación fallida &nbsp;</strong>',
 			'<button type="button" class="close" data-dismiss="alert" aria-label="Close">
 						<span aria-hidden="true">&times;</span>
 					</button>
@@ -44,7 +40,7 @@ class Sides extends CI_Controller
 		{
 			$this->ItemModel->create($data['sizes'], 0);
 			$this->session->set_flashdata('message', 'El platillo ha sido creado.');
-			redirect(base_url() . 'items/index');
+			redirect(base_url() . 'sides/index');
 		}
 	}
 
@@ -56,19 +52,14 @@ class Sides extends CI_Controller
 
 		$data['title'] = "Editar o Actualizar Menu.";
 		$data['items'] = $this->ItemModel->index();
-		$data['ingredients'] = $this->IngredientModel->get_ingredients();
 		$data['sizes'] = $this->SizeModel->get_sizes();
 
 		$data['item'] = $this->ItemModel->get($id);
-		$data['item_ingredients'] = $this->ItemModel->get_item_ingredients($id);
 		$data['item_sizes'] = $this->ItemModel->get_item_sizes($id);
 
 		$this->form_validation->set_rules('item_name', 'Nombre del item.', 'required');
+		$this->form_validation->set_rules('side_price', 'Precio del platillo.', 'required');
 
-		foreach ($data['sizes'] as $size)
-		{
-			$this->form_validation->set_rules($size['size_name'].'_price', 'Precio para '.$size['size_name'], 'required');
-		}
 
 		if($this->form_validation->run() === FALSE)
 		{
@@ -77,7 +68,7 @@ class Sides extends CI_Controller
 			$this->load->view('templates/topnav');
 			$this->load->view('templates/sidebar');
 			$this->load->view('templates/wrapper');
-			$this->load->view('items/edit', $data); //loading page and data
+			$this->load->view('sides/edit', $data); //loading page and data
 			$this->load->view('templates/footer');
 		}
 		else

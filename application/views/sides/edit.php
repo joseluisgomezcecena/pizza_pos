@@ -9,7 +9,7 @@
 						<i class="anticon anticon-check-circle"></i>
 					</span>
 
-					<strong>Operación Exitosa</strong>
+					<strong>Operación Exitosa &nbps;</strong>
 
 					<?php echo $this->session->flashdata('message'); ?>
 
@@ -31,7 +31,7 @@
 				</div>
 			</div>
 
-			<?php echo form_open(base_url() . 'items/edit/' . $item['item_id']) ?>
+			<?php echo form_open(base_url() . 'sides/edit/' . $item['item_id']) ?>
 
 				<div class="row">
 					<div class="form-group col-lg-12">
@@ -39,65 +39,12 @@
 						<input type="text" class="form-control" name="item_name"  id="name" value="<?php echo $item['item_name'] ?>" placeholder="Ej. Pizza de Pepperoni.">
 					</div>
 
-					<div style="padding-left: 32px; padding-right: 15px" class="row">
 
-						<?php
-							$checked = '';
-							foreach ($ingredients as $ingredient):
-						?>
-
-							<?php
-							foreach ($item_ingredients as $item_ingredient)
-							{
-								if($item_ingredient['ingredient_id'] == $ingredient['ingredient_id'])
-								{
-									$checked = 'checked';
-									break;
-								}
-								else
-								{
-									$checked = '';
-								}
-							}
-							?>
-
-							<!--checkboxes-->
-							<div class="form-check col-lg-3 mt-2 mb-2">
-								<input class="form-check-input" type="checkbox" name="ingredient_id[]" <?php echo $checked ?> value="<?php echo $ingredient['ingredient_id']; ?>" id="defaultCheck1">
-								<label class="form-check-label" for="defaultCheck1">
-									<?php echo $ingredient['ingredient_name']; ?>
-								</label>
-							</div>
-						<?php endforeach; ?>
+					<div class="form-group col-lg-6">
+						<label for="inputPassword2" class="sr-only">Precio</label>
+						<input type="number" class="form-control" name="side_price"  id="name" placeholder="Precio" value="<?php echo  ?>">
 					</div>
 
-
-					<?php
-						$price = '';
-						foreach ($sizes as $size):
-					?>
-						<?php
-
-							foreach ($item_sizes as $item_size)
-							{
-								if($item_size['size_id'] == $size['size_id'])
-								{
-									$price = $item_size['price'];
-									break;
-								}
-								else
-								{
-									$price = '';
-								}
-							}
-
-						?>
-
-						<div class="form-group mb-2 mt-3 col-lg-4">
-							<label for="inputPassword2" class="">Precio para: <?php echo $size['size_name'] ?></label>
-							<input type="number" class="form-control" value="<?php echo $price; ?>" name="<?php echo $size['size_name'] ?>_price"  id="name" placeholder="Precio para: <?php echo $size['size_name'] ?>">
-						</div>
-					<?php endforeach; ?>
 
 
 					<div class="col mt-5 mb-5">
