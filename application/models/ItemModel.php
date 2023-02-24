@@ -107,7 +107,7 @@ class ItemModel extends CI_Model
 
 
 
-	public function edit($sizes, $id)
+	public function edit($sizes, $id, $is_pizza)
 	{
 		/*********** DELETE EVERYTHING FROM ITEM_SIZE *******/
 
@@ -117,32 +117,48 @@ class ItemModel extends CI_Model
 		/*********** UPDATE INTO ITEMS ***********/
 		$data = array(
 			'item_name' => $this->input->post('item_name'),
+			'is_pizza' => $is_pizza,
 		);
+
 		$this->db->update('items', $data, array('item_id' => $id));
 
 
 		/*********** Insert last id ITEM_SIZE ***********/
-		foreach ($sizes as $size)
+		if ($is_pizza == 1)
+		{
+			foreach ($sizes as $size)
+			{
+				$data = array(
+					'item_id' => $id,
+					'price' => $this->input->post($size['size_name'].'_price'),
+					'size_id' => $size['size_id'],
+				);
+
+				$this->db->insert('item_size', $data);
+			}
+
+			//insertinto item_ingredient
+			$ingredients = $this->input->post('ingredient_id');
+			foreach ($ingredients as $ingredient)
+			{
+				$data = array(
+					'item_id' => $id,
+					'ingredient_id' => $ingredient,
+				);
+
+				$this->db->insert('item_ingredient', $data);
+			}
+
+		}
+		else
 		{
 			$data = array(
 				'item_id' => $id,
-				'price' => $this->input->post($size['size_name'].'_price'),
-				'size_id' => $size['size_id'],
+				'price' => $this->input->post('side_price'),
+				'size_id' => 0,
 			);
 
 			$this->db->insert('item_size', $data);
-		}
-
-		//insertinto item_ingredient
-		$ingredients = $this->input->post('ingredient_id');
-		foreach ($ingredients as $ingredient)
-		{
-			$data = array(
-				'item_id' => $id,
-				'ingredient_id' => $ingredient,
-			);
-
-			$this->db->insert('item_ingredient', $data);
 		}
 
 	}

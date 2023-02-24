@@ -34,6 +34,7 @@
 			<?php echo form_open(base_url() . 'sides/edit/' . $item['item_id']) ?>
 
 				<div class="row">
+
 					<div class="form-group col-lg-12">
 						<label for="inputPassword2" class="sr-only">Nombre del platillo</label>
 						<input type="text" class="form-control" name="item_name"  id="name" value="<?php echo $item['item_name'] ?>" placeholder="Ej. Pizza de Pepperoni.">
