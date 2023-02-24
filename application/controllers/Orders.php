@@ -131,7 +131,8 @@ class Orders extends  CI_Controller
 
 
 		//load header, page & footer
-		$this->load->view('templates/header');
+		//$this->load->view('templates/header');
+		$this->load->view('templates/header_print');
 		//$this->load->view('templates/topnav');
 		$this->load->view('orders/receipt', $data); //loading page and data
 		//$this->load->view('templates/footer_cashier');
