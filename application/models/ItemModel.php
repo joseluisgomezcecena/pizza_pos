@@ -34,9 +34,13 @@ class ItemModel extends CI_Model
 	{
 		$this->db->select('*');
 		$this->db->from('item_size');
-		$this->db->join('sizes', 'sizes.size_id = item_size.size_id');
+		$this->db->join('sizes', 'sizes.size_id = item_size.size_id', 'left');
 		$this->db->where('item_id', $id);
 		$query = $this->db->get();
+
+		$last_query = $this->db->last_query();
+		print_r($last_query);
+
 		return $query->result_array();
 	}
 

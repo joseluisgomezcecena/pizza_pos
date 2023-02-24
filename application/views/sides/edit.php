@@ -40,11 +40,15 @@
 					</div>
 
 
+
+					<?php foreach ($item_sizes as $item_size): ?>
+
 					<div class="form-group col-lg-6">
 						<label for="inputPassword2" class="sr-only">Precio</label>
-						<input type="number" class="form-control" name="side_price"  id="name" placeholder="Precio" value="<?php echo  ?>">
+						<input type="number" class="form-control" name="side_price"  id="name" placeholder="Precio" value="<?php echo $item_size['price']  ?>">
 					</div>
 
+					<?php endforeach; ?>
 
 
 					<div class="col mt-5 mb-5">
