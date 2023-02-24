@@ -92,7 +92,7 @@ $route['auth/register'] = 'auth/register';
 //admin route.  This is the default route for the admin section
 $route['admin'] = 'admins/index';
 
-$route['admin/sales'] = "reports/index";
+$route['admin/sales'] = "sales/index";
 
 //ingredients
 $route['admin/ingredients'] = 'ingredients/index';

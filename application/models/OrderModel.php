@@ -213,8 +213,9 @@ class OrderModel extends CI_Model
 			//$this->db->where('created_at >=', date('Y-m-01 00:00:00'));
 			#$this->db->where('created_at <=', date('Y-m-t 23:59:59'));
 
-			$this->db->select('order_total');
+			$this->db->select('*');
 			$this->db->from('orders');
+			$this->db->join('clients', 'clients.client_id=orders.client_id', 'left');
 			$this->db->where('order_closed', 1);
 			$this->db->where('created_at >=', date('Y-m-d 00:00:00'));
 			$this->db->where('created_at <=', date('Y-m-d 23:59:59'));
@@ -223,16 +224,18 @@ class OrderModel extends CI_Model
 		{
 			if($end == ''|| $end == NULL || empty($end))
 			{
-				$this->db->select('order_total');
+				$this->db->select('*');
 				$this->db->from('orders');
+				$this->db->join('clients', 'clients.client_id=orders.client_id', 'left');
 				$this->db->where('order_closed', 1);
 				$this->db->where('created_at >=', $start . " 00:00:00");
 				$this->db->where('created_at <=', date($start . ' 23:59:59'));
 			}
 			else
 			{
-				$this->db->select('order_total');
+				$this->db->select('*');
 				$this->db->from('orders');
+				$this->db->join('clients', 'clients.client_id=orders.client_id', 'left');
 				$this->db->where('order_closed', 1);
 				$this->db->where('created_at >=', $start . " 00:00:00");
 				$this->db->where('created_at <=', date($end . ' 23:59:59'));
@@ -240,6 +243,8 @@ class OrderModel extends CI_Model
 		}
 
 		$query = $this->db->get();
+		$last = $this->db->last_query();
+		print_r($last);
 		return $query->result_array();
 	}
 
