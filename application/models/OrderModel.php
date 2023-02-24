@@ -131,8 +131,8 @@ class OrderModel extends CI_Model
 		$this->db->where('order_id', $order_id);
 		$query = $this->db->get();
 
-		$last_query = $this->db->last_query();
-		print_r($last_query);
+		//$last_query = $this->db->last_query();
+		//print_r($last_query);
 
 		return $query->result_array();
 	}

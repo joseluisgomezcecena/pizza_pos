@@ -8,11 +8,11 @@ $extra_suma = 0;
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<meta http-equiv="X-UA-Compatible" content="ie=edge">
 	<link rel="stylesheet" href="style.css">
-	<title>Receipt example</title>
+	<title>Recibo</title>
 </head>
 <body>
-<div class="ticket">
-	<img src="<?php echo base_url() ?>assets/img/p1.png" alt="Logo">
+<div class="ticket centered">
+	<img style="width: 50px; height: auto;" src="<?php echo base_url() ?>assets/img/p1.png" alt="Logo">
 	<p class="centered">CHEKOS PIZZA
 		<br>Lombardo Toledano 1398-1,
 		<br>Calle Rio Presidio 1301, Calle Diluvio Condesa</p>
