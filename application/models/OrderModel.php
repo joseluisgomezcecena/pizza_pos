@@ -21,19 +21,35 @@ class OrderModel extends CI_Model
 	}
 
 
-	public function newOrderItem($size, $item, $order, $qty, $extras)
+	public function newOrderItem($size, $item, $order, $qty, $extras, $is_pizza)
 	{
 		//calculate if is not pizza is required
+		if ($is_pizza == 1) // is pizza
+		{
+			$data = [
+				'order_id'=>$order,
+				'item_id'=>$item,
+				'size_id'=>$size,
+				'qty'=>$qty,
+				'price'=>$this->getprice($size, $item)
+			];
 
-		$data = [
-			'order_id'=>$order,
-			'item_id'=>$item,
-			'size_id'=>$size,
-			'qty'=>$qty,
-			'price'=>$this->getprice($size, $item)
-		];
+			$this->db->insert('order_items', $data);
+		}
+		else //is not pizza is side
+		{
+			$data = [
+				'order_id'=>$order,
+				'item_id'=>$item,
+				'size_id'=>$size,
+				'qty'=>$qty,
+				'price'=>$this->get_prize_side($item)
+			];
 
-		$this->db->insert('order_items', $data);
+			$this->db->insert('order_items', $data);
+		}
+
+
 		$id = $this->db->insert_id();
 
 		foreach ($extras as $extra) {
@@ -201,6 +217,17 @@ class OrderModel extends CI_Model
 		$this->db->select('price');
 		$this->db->from('item_size');
 		$this->db->where('size_id', $size);
+		$this->db->where('item_id', $item);
+		$query = $this->db->get();
+		$result = $query->row_array();
+		return $result['price'];
+	}
+
+
+	public function get_prize_side($item)
+	{
+		$this->db->select('price');
+		$this->db->from('item_size');
 		$this->db->where('item_id', $item);
 		$query = $this->db->get();
 		$result = $query->row_array();

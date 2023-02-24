@@ -103,7 +103,7 @@ class Orders extends  CI_Controller
 		}
 		else
 		{
-			$this->OrderModel->newOrderItem($size, $item, $order, $qty, $extras);
+			$this->OrderModel->newOrderItem($size, $item, $order, $qty, $extras, $is_pizza);
 			redirect(base_url() . 'cashier/order/items/' . $order);
 		}
 	}
