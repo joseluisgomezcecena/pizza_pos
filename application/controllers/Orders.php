@@ -51,6 +51,8 @@ class Orders extends  CI_Controller
 		$data['order'] = $order;
 		$data['item_id'] = $item;
 
+		$is_pizza = $data['item']['is_pizza'];
+
 
 		//inputs
 		$size = $this->input->post('size');
@@ -61,8 +63,16 @@ class Orders extends  CI_Controller
 
 
 
-		$this->form_validation->set_rules('size', 'Tamaño', 'required');
-		$this->form_validation->set_rules('qty', 'Cantidad', 'required');
+		if($is_pizza == 0)
+		{
+			$this->form_validation->set_rules('qty', 'Cantidad', 'required');
+		}
+		else
+		{
+			$this->form_validation->set_rules('size', 'Tamaño', 'required');
+			$this->form_validation->set_rules('qty', 'Cantidad', 'required');
+		}
+
 
 
 		$this->form_validation->set_error_delimiters(
@@ -77,9 +87,18 @@ class Orders extends  CI_Controller
 			//load header, page & footer
 			$this->load->view('templates/header');
 			$this->load->view('templates/topnav');
-			//$this->load->view('templates/sidebar');
-			//$this->load->view('templates/wrapper');
-			$this->load->view('orders/detail', $data); //loading page and data
+
+			if ($is_pizza == 0)
+			{
+				$this->load->view('orders/detail_side', $data); //loading page and data
+			}
+			else
+			{
+				$this->load->view('orders/detail', $data); //loading page and data
+			}
+
+			//$this->load->view('orders/detail', $data); //loading page and data
+
 			$this->load->view('templates/footer_cashier');
 		}
 		else
