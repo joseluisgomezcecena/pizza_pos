@@ -1,6 +1,6 @@
 <style>
 * {
-font-size: 12px;
+font-size: 10px;
 font-family: 'Times New Roman';
 }
 

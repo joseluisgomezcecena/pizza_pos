@@ -12,15 +12,15 @@ $extra_suma = 0;
 </head>
 <body>
 <div class="ticket">
-	<img src="./logo.png" alt="Logo">
-	<p class="centered">RECEIPT EXAMPLE
-		<br>Address line 1
-		<br>Address line 2</p>
+	<img src="<?php echo base_url() ?>assets/img/p1.png" alt="Logo">
+	<p class="centered">CHEKOS PIZZA
+		<br>Lombardo Toledano 1398-1,
+		<br>Calle Rio Presidio 1301, Calle Diluvio Condesa</p>
 	<table>
 		<thead>
 		<tr>
-			<th class="quantity">Q.</th>
-			<th class="description">Description</th>
+			<th class="quantity">Cant.</th>
+			<th class="description">Descripción</th>
 			<th class="price">$$</th>
 		</tr>
 		</thead>
@@ -47,10 +47,10 @@ $extra_suma = 0;
 
 				<?php endforeach; ?>
 			</td>
-			<td class="price">
-				$<?php echo $order_detail['price'] *  $order_detail['qty'] ?>
-				Total: $<?php echo ($order_detail['price'] *  $order_detail['qty'])+($extra_suma * $order_detail['qty'])  ?>
 
+			<td class="price">
+				$<?php echo $order_detail['price'] *  $order_detail['qty'] ?><br>
+				Total: $<?php echo ($order_detail['price'] *  $order_detail['qty'])+($extra_suma * $order_detail['qty'])  ?>
 			</td>
 
 		</tr>
@@ -61,8 +61,8 @@ $extra_suma = 0;
 
 		</tbody>
 	</table>
-	<p class="centered">Thanks for your purchase!
-		<br>parzibyte.me/blog</p>
+	<p class="centered">Gracias Por Su Compra!
+		<br>CHEKOS PIZZA</p>
 </div>
 <button id="btnPrint" class="hidden-print">Print</button>
 <script src="script.js"></script>
