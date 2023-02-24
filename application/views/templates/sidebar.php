@@ -66,7 +66,7 @@
 				</a>
 				<ul class="dropdown-menu">
 					<li>
-						<a href="<?php echo base_url() ?>sales">Reporte de ventas</a>
+						<a href="<?php echo base_url() ?>admin/sales">Reporte de ventas</a>
 					</li>
 				</ul>
 			</li>

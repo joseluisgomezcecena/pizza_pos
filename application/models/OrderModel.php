@@ -206,6 +206,42 @@ class OrderModel extends CI_Model
 
 
 
+	public function report($start, $end)
+	{
+		if($start == ''|| $start == NULL || empty($start))
+		{
+			//$this->db->where('created_at >=', date('Y-m-01 00:00:00'));
+			#$this->db->where('created_at <=', date('Y-m-t 23:59:59'));
+
+			$this->db->select('order_total');
+			$this->db->from('orders');
+			$this->db->where('order_closed', 1);
+			$this->db->where('created_at >=', date('Y-m-d 00:00:00'));
+			$this->db->where('created_at <=', date('Y-m-d 23:59:59'));
+		}
+		else
+		{
+			if($end == ''|| $end == NULL || empty($end))
+			{
+				$this->db->select('order_total');
+				$this->db->from('orders');
+				$this->db->where('order_closed', 1);
+				$this->db->where('created_at >=', $start . " 00:00:00");
+				$this->db->where('created_at <=', date($start . ' 23:59:59'));
+			}
+			else
+			{
+				$this->db->select('order_total');
+				$this->db->from('orders');
+				$this->db->where('order_closed', 1);
+				$this->db->where('created_at >=', $start . " 00:00:00");
+				$this->db->where('created_at <=', date($end . ' 23:59:59'));
+			}
+		}
+
+		$query = $this->db->get();
+		return $query->result_array();
+	}
 
 
 
