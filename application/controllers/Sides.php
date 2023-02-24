@@ -75,7 +75,7 @@ class Sides extends CI_Controller
 		{
 			$this->ItemModel->edit($data['sizes'], $id, 0);
 			$this->session->set_flashdata('message', 'El platillo ha sido editado.');
-			redirect(base_url() . 'items/index');
+			redirect(base_url() . 'sides/index');
 		}
 
 
@@ -103,14 +103,14 @@ class Sides extends CI_Controller
 			$this->load->view('templates/topnav');
 			$this->load->view('templates/sidebar');
 			$this->load->view('templates/wrapper');
-			$this->load->view('items/delete', $data); //loading page and data
+			$this->load->view('sides/delete', $data); //loading page and data
 			$this->load->view('templates/footer');
 		}
 		else
 		{
 			$this->ItemModel->delete($id);
 			$this->session->set_flashdata('message', 'El platillo ha sido eliminado.');
-			redirect(base_url() . 'items/index');
+			redirect(base_url() . 'sides/index');
 		}
 	}
 
