@@ -23,6 +23,8 @@ class OrderModel extends CI_Model
 
 	public function newOrderItem($size, $item, $order, $qty, $extras)
 	{
+		//calculate if is not pizza is required
+
 		$data = [
 			'order_id'=>$order,
 			'item_id'=>$item,
@@ -108,10 +110,14 @@ class OrderModel extends CI_Model
 	{
 		$this->db->select('order_items.*, items.item_name, sizes.size_name');
 		$this->db->from('order_items');
-		$this->db->join('items', 'items.item_id = order_items.item_id');
-		$this->db->join('sizes', 'sizes.size_id = order_items.size_id');
+		$this->db->join('items', 'items.item_id = order_items.item_id', 'left');
+		$this->db->join('sizes', 'sizes.size_id = order_items.size_id', 'left');
 		$this->db->where('order_id', $order_id);
 		$query = $this->db->get();
+
+		$last_query = $this->db->last_query();
+		print_r($last_query);
+
 		return $query->result_array();
 	}
 
