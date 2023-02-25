@@ -15,7 +15,7 @@
 				</a>
 				<ul class="dropdown-menu">
 					<li>
-						<a href="<?php echo base_url() ?>">Tomar Orden</a>
+						<a href="<?php echo base_url() ?>cashier">Tomar Orden</a>
 					</li>
 				</ul>
 			</li>
