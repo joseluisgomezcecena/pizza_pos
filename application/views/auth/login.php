@@ -33,9 +33,9 @@
 					</div>
 					<div class="form-group">
 						<label class="font-weight-semibold" for="password">Contraseña:</label>
-						<!--
-						<a class="float-right font-size-13 text-muted" href="#">Olvidaste tu contraseña?</a>
-						-->
+
+						<a onclick="history.back()" class="float-right font-size-13 text-muted" href="#">Volver</a>
+
 
 						<div class="input-affix m-b-10">
 							<i class="prefix-icon anticon anticon-lock"></i>
