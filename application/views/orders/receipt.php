@@ -50,7 +50,7 @@ $total = 0;
 
 			<td class="price">
 				$<?php echo $order_detail['price'] *  $order_detail['qty'] ?><br>
-				Total: $<?php echo $total+= ($order_detail['price'] *  $order_detail['qty'])+($extra_suma * $order_detail['qty'])  ?>
+				Total: $<?php $total+= ($order_detail['price'] *  $order_detail['qty'])+($extra_suma * $order_detail['qty'])  ?>
 			</td>
 
 		</tr>

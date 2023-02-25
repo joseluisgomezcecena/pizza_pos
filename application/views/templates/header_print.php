@@ -14,21 +14,21 @@ border-collapse: collapse;
 
 td.description,
 th.description {
-width: 125px;
-max-width: 125px;
+width: 165px;
+max-width: 165px;
 }
 
 td.quantity,
 th.quantity {
-width: 60px;
-max-width: 60px;
+width: 70px;
+max-width: 70px;
 word-break: break-all;
 }
 
 td.price,
 th.price {
-width: 60px;
-max-width: 60px;
+width: 70px;
+max-width: 70px;
 word-break: break-all;
 }
 
@@ -38,8 +38,8 @@ align-content: center;
 }
 
 .ticket {
-width: 245px;
-max-width: 245px;
+width: 305px;
+max-width: 305px;
 }
 
 img {
