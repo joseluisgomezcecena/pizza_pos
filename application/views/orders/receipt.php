@@ -15,8 +15,7 @@ $total = 0;
 <div class="ticket centered">
 	<img style="width: 50px; height: auto;" src="<?php echo base_url() ?>assets/img/p1.png" alt="Logo">
 	<p class="centered">CHEKOS PIZZA
-		<br>Lombardo Toledano 1398-1,
-		<br>Calle Rio Presidio 1301, Calle Diluvio Condesa</p>
+		<br>Calle Rio Presidio 1301, Colonia Roma</p>
 	<table>
 		<thead>
 		<tr>
@@ -62,8 +61,8 @@ $total = 0;
 
 		</tbody>
 	</table>
-	<p class="centered">Dirección: <?php echo $client['client_street'] . " #" . $client['client_number'] . " " . $client['client_block'] ?></p>
-	<p class="centered"><?php echo $client['client_address_notes'] ?></p>
+	<p class="centered"><b>Dirección: <?php echo $client['client_street'] . " #" . $client['client_number'] . " " . $client['client_block'] ?></b></p>
+	<p class="centered"><b><?php echo $client['client_address_notes'] ?></b></p>
 	<p class="centered"><b>TOTAL:</b> $<?php echo $total; ?></p>
 	<p class="centered">Gracias Por Su Compra!
 		<br>CHEKOS PIZZA</p>

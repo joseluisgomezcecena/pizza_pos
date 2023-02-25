@@ -1,6 +1,6 @@
 <style>
 * {
-font-size: 13px;
+font-size: 16px;
 font-family: 'Times New Roman';
 }
 
@@ -14,8 +14,8 @@ border-collapse: collapse;
 
 td.description,
 th.description {
-width: 105px;
-max-width: 105px;
+width: 125px;
+max-width: 125px;
 }
 
 td.quantity,
@@ -38,8 +38,8 @@ align-content: center;
 }
 
 .ticket {
-width: 225px;
-max-width: 225px;
+width: 245px;
+max-width: 245px;
 }
 
 img {
