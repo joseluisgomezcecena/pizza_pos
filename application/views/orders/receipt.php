@@ -62,6 +62,7 @@ $total = 0;
 
 		</tbody>
 	</table>
+	<p class="centered"><?php echo $client['client_street'] . " " . $client['number'] . " " . $client['client_block'] ?></p>
 	<p class="centered"><b>TOTAL:</b> $<?php echo $total; ?></p>
 	<p class="centered">Gracias Por Su Compra!
 		<br>CHEKOS PIZZA</p>
