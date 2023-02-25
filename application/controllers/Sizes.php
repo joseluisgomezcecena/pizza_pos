@@ -1,5 +1,5 @@
 <?php
-class Sizes extends CI_Controller
+class Sizes extends MY_Controller
 {
 	public function index()
 	{

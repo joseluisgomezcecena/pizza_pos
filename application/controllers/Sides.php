@@ -1,5 +1,5 @@
 <?php
-class Sides extends CI_Controller
+class Sides extends MY_Controller
 {
 	public function index()
 	{

@@ -1,5 +1,5 @@
 <?php
-class Ingredients extends CI_Controller
+class Ingredients extends MY_Controller
 {
 	public function index()
 	{
