@@ -7,7 +7,7 @@
 	<title>Slice POS v1.0</title>
 
 	<!-- Favicon -->
-	<link rel="shortcut icon" href="<?php echo base_url() ?>assets/images/logo/pizzaposlogo-01.png">
+	<link rel="shortcut icon" href="<?php echo base_url() ?>assets/img/pizzaposlogo-01.png">
 
 	<!-- page css -->
 	<link href="<?php echo base_url() ?>assets/vendors/bootstrap-datepicker/bootstrap-datepicker.min.css" rel="stylesheet">
