@@ -3,16 +3,17 @@
 	<div class="layout is-side-nav-dark">
 		<!-- Header START -->
 		<div class="header">
-			<div class="logo logo-dark">
-				<a href="index.html">
-					<img src="assets/images/logo/logo.png" alt="Logo">
-					<img class="logo-fold" src="assets/images/logo/logo-fold.png" alt="Logo">
+			<div class="logo logo-dark text-center">
+				<a href="<?php echo base_url() ?>">
+					<span class="text-center text-dark font-weight-bolder">Pizza POS</span>
+					<img class="text-center" src="<?php echo base_url() ?>assets/images/logo/p1.png" alt="Logo" width="50" height="50">
+					<img style="margin-left: 10px;" class="logo-fold text-center" src="<?php echo base_url() ?>assets/images/logo/p1.png" alt="Logo"  width="50" height="50">
 				</a>
 			</div>
 			<div class="logo logo-white">
-				<a href="index.html">
-					<img src="assets/images/logo/logo-white.png" alt="Logo">
-					<img class="logo-fold" src="assets/images/logo/logo-fold-white.png" alt="Logo">
+				<a href="<?php echo base_url() ?>">
+					<img src="<?php echo base_url() ?>assets/images/logo/p1.png" alt="Logo" width="50" height="50">
+					<img class="logo-fold text-center" src="<?php echo base_url() ?>assets/images/logo/p1.png" alt="Logo" width="50" height="50">
 				</a>
 			</div>
 			<div class="nav-wrap">
@@ -106,6 +107,7 @@
 
 					<li class="dropdown dropdown-animated scale-left">
 						<div class="pointer" data-toggle="dropdown">
+							<?php if (isset($this->session->userdata['logged_in'])) : ?>
 							<div class="avatar avatar-image  m-h-10 m-r-15 bg-primary">
 								<!--avatar with letter-->
 								<span class="avatar-title rounded-circle">
@@ -114,13 +116,18 @@
 									<?php endif; ?>
 								</span>
 							</div>
+							<?php endif; ?>
 						</div>
 						<div class="p-b-15 p-t-20 dropdown-menu pop-profile">
 							<div class="p-h-20 p-b-15 m-b-10 border-bottom">
 								<div class="d-flex m-r-50">
+
 									<div class="avatar avatar-lg avatar-image bg-primary">
 										<?php if (isset($this->session->userdata['logged_in'])) : ?>
-											<span class="avatar-title rounded-circle"><?php echo strtoupper(substr($this->session->userdata['user_name'],'0','1'))  ?></span>										<?php endif; ?>									</div>
+											<span class="avatar-title rounded-circle"><?php echo strtoupper(substr($this->session->userdata['user_name'],'0','1'))  ?></span>
+										<?php endif; ?>
+									</div>
+
 									<div class="m-l-10">
 										<p class="m-b-0 text-dark font-weight-semibold"><?php echo $this->session->userdata['user_name'] ?></p>
 										<p class="m-b-0 opacity-07">Administrador</p>
