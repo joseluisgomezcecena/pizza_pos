@@ -31,7 +31,8 @@ class OrderModel extends CI_Model
 				'item_id'=>$item,
 				'size_id'=>$size,
 				'qty'=>$qty,
-				'price'=>$this->getprice($size, $item)
+				'price'=>$this->getprice($size, $item),
+				'notes'=>$this->input->post('notes')
 			];
 
 			$this->db->insert('order_items', $data);

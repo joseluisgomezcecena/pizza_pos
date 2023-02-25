@@ -97,6 +97,14 @@
 					</div>
 
 
+					<div class="row mt-3">
+						<div class="col">
+							<label>Notas(Ej Especialidad en promo):</label>
+							<input type="text" name="notes" class="form-control">
+						</div>
+					</div>
+
+
 
 					<button type="submit" class="btn btn-primary mt-3">Agregar a la Orden.</button>
 				</div><!--card-body-->

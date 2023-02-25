@@ -3,9 +3,10 @@
 	<div class="row card  mt-5">
 		<div class="col-lg-12 mt-5 mb-5">
 
-			<table id="data-table" class="table">
-				<a class="btn btn-primary btn-rounded" href="<?php echo base_url() ?>cashier/clients/add/new"> <i class="anticon anticon-user-add"></i>&nbsp; Nuevo Cliente</a>
-				<br><br>
+			<a class="btn btn-primary btn-rounded" href="<?php echo base_url() ?>cashier/clients/add/new"> <i class="anticon anticon-user-add"></i>&nbsp; Nuevo Cliente</a>
+			<br><br>
+
+			<table style="width: 100%" id="data-table" class="table">
 
 				<thead>
 				<tr>

@@ -36,11 +36,16 @@ class IngredientModel extends CI_Model
 		{
 			$this->db->select('*');
 			$this->db->from('ingredients');
-			$this->db->where('is_crust', 1);
+			//$this->db->where('is_crust', 1);
+			$this->db->where('is_crust = 1 OR ingredient_name = "Queso"');//added this line
+			//$this->db->where('ingredient_name = ', 'queso');//added this line
 			$query = $this->db->get();
 			return $query->result_array();
 		}
 	}
+
+
+
 
 
 	public function get_all_ingredients()

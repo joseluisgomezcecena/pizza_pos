@@ -75,6 +75,7 @@
 
 								<td>
 									<?php echo $order_detail['item_name'] ?><br><?php echo $order_detail['size_name'] ?><br>
+									<?php echo $order_detail['notes']?><br/>
 
 									<?php
 									$extras = $controller->get_extras($order_detail['order_id'],$order_detail['oi_id']);
