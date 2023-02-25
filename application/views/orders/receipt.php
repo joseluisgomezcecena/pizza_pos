@@ -1,5 +1,6 @@
 <?php
 $extra_suma = 0;
+$total = 0;
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -50,7 +51,7 @@ $extra_suma = 0;
 
 			<td class="price">
 				$<?php echo $order_detail['price'] *  $order_detail['qty'] ?><br>
-				Total: $<?php echo ($order_detail['price'] *  $order_detail['qty'])+($extra_suma * $order_detail['qty'])  ?>
+				Total: $<?php echo $total+= ($order_detail['price'] *  $order_detail['qty'])+($extra_suma * $order_detail['qty'])  ?>
 			</td>
 
 		</tr>
@@ -61,10 +62,12 @@ $extra_suma = 0;
 
 		</tbody>
 	</table>
+	<p class="centered"><b>TOTAL:</b> $<?php echo $total; ?></p>
 	<p class="centered">Gracias Por Su Compra!
 		<br>CHEKOS PIZZA</p>
 </div>
-<button id="btnPrint" class="hidden-print">Print</button>
+<button id="btnPrint" class="hidden-print">Imprimir</button>
+<button onclick="history.back()" class="hidden-print">Volver</button>
 <script src="script.js"></script>
 </body>
 </html>
