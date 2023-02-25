@@ -1,4 +1,12 @@
-<?php echo form_open(base_url() . 'cashiers/addclient/' . $param); ?>
+<div style="margin-top: 500px;" class="container mt-5">
+<br>
+<?php
+//classes for form
+$attributes = array(
+	'class' => 'mt-5',
+);
+?>
+<?php echo form_open(base_url() . 'cashiers/addclient/' . $param, $attributes); ?>
 	<div class="row">
 		<div class="col">
 			<?php if ($this->session->flashdata('message')): ?>
@@ -37,7 +45,7 @@
 			<input type="text" class="form-control" name="number" placeholder="Numero externo">
 		</div>
 		<div class="col">
-			<label for="">Cuadra</label>
+			<label for="">Colonia</label>
 			<input type="text" class="form-control" name="neighborhood" placeholder="Cuadra">
 		</div>
 	</div>
@@ -55,3 +63,4 @@
 	</div>
 
 <?php echo form_close(); ?>
+</div>
