@@ -81,14 +81,14 @@ $total = 0;
 		window.print();
 	}
 
-	/*
+
 
 	const $btnPrint = document.querySelector("#btnPrint");
 	$btnPrint.addEventListener("click", () => {
 		window.print();
 	});
 
-	*/
+
 </script>
 
 
