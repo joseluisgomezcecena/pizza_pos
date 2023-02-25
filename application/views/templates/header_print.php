@@ -1,6 +1,6 @@
 <style>
 * {
-font-size: 11px;
+font-size: 13px;
 font-family: 'Times New Roman';
 }
 
@@ -14,21 +14,21 @@ border-collapse: collapse;
 
 td.description,
 th.description {
-width: 95px;
-max-width: 95px;
+width: 105px;
+max-width: 105px;
 }
 
 td.quantity,
 th.quantity {
-width: 55px;
-max-width: 55px;
+width: 60px;
+max-width: 60px;
 word-break: break-all;
 }
 
 td.price,
 th.price {
-width: 55px;
-max-width: 55px;
+width: 60px;
+max-width: 60px;
 word-break: break-all;
 }
 
@@ -38,8 +38,8 @@ align-content: center;
 }
 
 .ticket {
-width: 205px;
-max-width: 205px;
+width: 225px;
+max-width: 225px;
 }
 
 img {
