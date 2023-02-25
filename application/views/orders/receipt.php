@@ -44,7 +44,7 @@ $total = 0;
 				foreach ($extras as $extra):
 					$extra_suma += $extra['price'];
 					?>
-					<b>Extra: <?php  $extra["ingredient_name"] ?></b> <b class="text-primary"><?php echo $extra['price'] ?></b><br>
+					<b>Extra: <?php echo $extra["ingredient_name"] ?></b> <b class="text-primary"><?php echo $extra['price'] ?></b><br>
 
 				<?php endforeach; ?>
 			</td>
@@ -65,6 +65,9 @@ $total = 0;
 	<p class="centered"><b>TOTAL:</b> $<?php echo $total; ?></p>
 	<p class="centered">Gracias Por Su Compra!
 		<br>CHEKOS PIZZA</p>
+	<br><br>
+	------------------------
+	<br>
 </div>
 <button id="btnPrint" class="hidden-print">Imprimir</button>
 <button onclick="history.back()" class="hidden-print">Volver</button>
