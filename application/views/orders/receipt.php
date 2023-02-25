@@ -43,14 +43,14 @@ $total = 0;
 				foreach ($extras as $extra):
 					$extra_suma += $extra['price'];
 					?>
-					<b>Extra: <?php echo $extra["ingredient_name"] ?></b> <b class="text-primary"><?php echo $extra['price'] ?></b><br>
+					<b>Extra: <?php echo $extra["ingredient_name"] ?></b> <b class="text-primary">$<?php echo $extra['price'] ?></b><br>
 
 				<?php endforeach; ?>
 			</td>
 
 			<td class="price">
 				$<?php echo $order_detail['price'] *  $order_detail['qty'] ?><br>
-				Total: $<?php $total+= ($order_detail['price'] *  $order_detail['qty'])+($extra_suma * $order_detail['qty'])  ?>
+				<?php $total+= ($order_detail['price'] *  $order_detail['qty'])+($extra_suma * $order_detail['qty'])  ?>
 			</td>
 
 		</tr>
