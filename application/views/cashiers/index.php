@@ -2,7 +2,9 @@
 <div class="container">
 	<div class="row">
 		<div class="col-lg-12">
-			<a href="<?php echo base_url(); ?>" class="btn btn-dark float-right"> <i class="fa fa-arrow-left"></i>&nbsp;Volver A Inicio</a>
+			<a href="<?php echo base_url(); ?>" class="btn btn-dark float-right btn-rounded"> <i class="fa fa-arrow-left"></i>&nbsp;Volver A Inicio</a>
+			<a href="<?php echo base_url(); ?>cashier/order/counter" class="btn btn-success float-left btn-rounded"> <i class="fa fa-cash-register"></i>&nbsp;Orden De Mostrador</a>
+
 		</div>
 	</div>
 </div>
@@ -13,6 +15,7 @@
 		<div class="col-lg-12 mt-5 mb-5">
 
 			<a class="btn btn-primary btn-rounded mt-2 mb-3" href="<?php echo base_url() ?>cashier/clients/add/new"> <i class="anticon anticon-user-add"></i>&nbsp; Nuevo Cliente</a>
+
 			<br><br>
 
 			<table style="width: 100%; font-size: 13px;" id="data-table" class="table table-responsive-lg">

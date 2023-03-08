@@ -58,7 +58,7 @@ $route['cashier/clients/add/(:any)'] = 'cashiers/addclient/$1';
 
 
 //orders and items
-$route['cashier/order/(:any)'] = 'orders/createorder/$1';//generates a new order and redirects to the following route.
+$route['cashier/order/(:any)'] = 'orders/createorder/$1';//parameter is the customer id --- generates a new order and redirects to the following route.
 $route['cashier/order/items/(:any)'] = 'orders/neworder/$1'; //loads view with menu items and order details
 $route['cashier/order/items/detail/(:any)/(:any)'] = 'orders/detail/$1/$2';//loads view with menu item details
 $route['cashier/order/items/add/(:any)'] = 'orders/addtocart/$1';

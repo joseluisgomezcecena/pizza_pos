@@ -10,6 +10,11 @@ class OrderModel extends CI_Model
 
 	public function newOrder($id)
 	{
+		if($id == 'counter')
+		{
+			$id = 0;
+		}
+
 		$data = [
 			'order_qty'=>0,
 			'created_at'=>date("Y-m-d H:i:s"),
