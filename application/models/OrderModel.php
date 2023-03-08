@@ -82,8 +82,9 @@ class OrderModel extends CI_Model
 
 		$this->db->select('orders.*, clients.client_name, clients.client_phone, clients.client_street, clients.client_number, clients.client_block');
 		$this->db->from('orders');
-		$this->db->join('clients', 'clients.client_id = orders.client_id');
-		$this->db->limit(10);
+		$this->db->join('clients', 'clients.client_id = orders.client_id', 'left');
+		$this->db->order_by('orders.order_id', 'DESC');
+		$this->db->limit(50);
 		$query = $this->db->get();
 		return $query->result_array();
 	}
