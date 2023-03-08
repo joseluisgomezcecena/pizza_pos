@@ -71,7 +71,7 @@ $total = 0;
 	<br>
 </div>
 <button id="btnPrint" class="hidden-print">Imprimir</button>
-<button onclick="history.back()" class="hidden-print">Volver</button>
+<a href="<?php echo base_url() ?>cashier" class="hidden-print">Volver</a>
 <script src="script.js"></script>
 </body>
 </html>

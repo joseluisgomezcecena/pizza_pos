@@ -16,9 +16,11 @@
 	<div class="row">
 
 		<div class="col-lg-12 ">
+			<a href="<?php echo base_url(); ?>" class="btn btn-dark float-right mt-5 mb-5 btn-rounded"> <i class="fa fa-arrow-left"></i>&nbsp;Volver A Inicio</a>
+			<a href="<?php echo base_url(); ?>cashier" class="btn btn-dark float-right mt-5 mb-5 btn-rounded"> <i class="fa fa-arrow-left"></i>&nbsp;Paso Anterior</a>
 
-
-				<button type="submit" class="btn btn-primary btn-lg btn-rounded mt-5 float-right"><i class="anticon anticon-check"></i> Terminar Orden</button>
+			<br><br>
+			<button type="submit" class="btn btn-primary btn-lg btn-rounded mt-5 float-left"><i class="anticon anticon-check"></i> Terminar Orden</button>
 		</div>
 
 		<!--columna izquierda-->
