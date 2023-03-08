@@ -61,8 +61,14 @@ $total = 0;
 
 		</tbody>
 	</table>
-	<p class="centered"><b>Dirección: <?php echo $client['client_street'] . " #" . $client['client_number'] . " " . $client['client_block'] ?></b></p>
-	<p class="centered"><b><?php echo $client['client_address_notes'] ?></b></p>
+
+	<?php if($client['client_id'] != 0):?>
+		<p class="centered"><b>Dirección: <?php echo $client['client_street'] . " #" . $client['client_number'] . " " . $client['client_block'] ?></b></p>
+		<p class="centered"><b><?php echo $client['client_address_notes'] ?></b></p>
+	<?php else: ?>
+		<p class="centered"><b>Orden de mostrador</b></p>
+	<?php endif; ?>
+
 	<p class="centered"><b>TOTAL:</b> $<?php echo $total; ?></p>
 	<p class="centered">Gracias Por Su Compra!
 		<br>CHEKOS PIZZA</p>
