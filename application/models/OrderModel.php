@@ -72,12 +72,17 @@ class OrderModel extends CI_Model
 	}
 
 
-	public function get_orders()
+	public function get_orders($order_status = NULL)
 	{
-		$this->db->select('orders.*, clients.client_name');
+
+		if($order_status != NULL)
+		{
+			$this->db->where('orders.order_closed', $order_status);
+		}
+
+		$this->db->select('orders.*, clients.client_name, clients.client_phone, clients.client_street, clients.client_number, clients.client_block');
 		$this->db->from('orders');
 		$this->db->join('clients', 'clients.client_id = orders.client_id');
-		$this->db->where('orders.order_closed', 1);
 		$this->db->limit(10);
 		$query = $this->db->get();
 		return $query->result_array();

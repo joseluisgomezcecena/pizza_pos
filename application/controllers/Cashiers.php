@@ -56,4 +56,20 @@ class Cashiers extends CI_Controller
 	}
 
 
+	public function listorders()
+	{
+
+		$data['title'] = "Lista de Ordenes";
+		$data['orders'] = $this->OrderModel->get_orders();
+
+
+		//load header, page & footer
+		$this->load->view('templates/header');
+		$this->load->view('templates/topnav');
+		$this->load->view('cashiers/list', $data); //loading page and data
+		$this->load->view('templates/footer_cashier');
+
+	}
+
+
 }

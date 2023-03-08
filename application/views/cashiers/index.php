@@ -4,7 +4,8 @@
 		<div class="col-lg-12">
 			<a href="<?php echo base_url(); ?>" class="btn btn-dark float-right btn-rounded"> <i class="fa fa-arrow-left"></i>&nbsp;Volver A Inicio</a>
 			<a href="<?php echo base_url(); ?>cashier/order/counter" class="btn btn-success float-left btn-rounded"> <i class="fa fa-cash-register"></i>&nbsp;Orden De Mostrador</a>
-
+			&nbsp;&nbsp;
+			<a href="<?php echo base_url(); ?>cashier/list" class="btn btn-secondary float-left btn-rounded"> <i class="fa fa-list-alt"></i>&nbsp;Ver Ordenes</a>
 		</div>
 	</div>
 </div>
