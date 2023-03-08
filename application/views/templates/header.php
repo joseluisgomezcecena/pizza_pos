@@ -49,6 +49,10 @@
 			border-radius: 15px;
 		}
 
+		.form-control {
+			border:solid 1px #ababab !important;
+		}
+
 		/*
 		.btn-primary {
 			background-color: #ff3f24 !important;

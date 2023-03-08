@@ -40,9 +40,15 @@
 
 
 					<li class="dropdown dropdown-animated scale-left">
-						<a href="#" onclick="history.back()" data-toggle="dropdown">
-							Volver<i class="anticon anticon-fast-backward notification-badge"></i>
+
+
+
+
+						<!--
+						<a href="#"  data-toggle="dropdown">
+							Volver<i class="fa fa-backward notification-badge"></i>
 						</a>
+						-->
 						<!--
 						<div class="dropdown-menu pop-notification">
 							<div class="p-v-15 p-h-25 border-bottom d-flex justify-content-between align-items-center">
