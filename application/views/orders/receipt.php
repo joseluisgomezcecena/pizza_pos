@@ -62,7 +62,7 @@ $total = 0;
 		</tbody>
 	</table>
 
-	<?php if($client['client_id'] != 0):?>
+	<?php if($client):?>
 		<p class="centered"><b>Dirección: <?php echo $client['client_street'] . " #" . $client['client_number'] . " " . $client['client_block'] ?></b></p>
 		<p class="centered"><b><?php echo $client['client_address_notes'] ?></b></p>
 	<?php else: ?>
@@ -72,13 +72,15 @@ $total = 0;
 	<p class="centered"><b>TOTAL:</b> $<?php echo $total; ?></p>
 	<p class="centered">Gracias Por Su Compra!
 		<br>CHEKOS PIZZA</p>
-	<br><br>
-	------------------------
+	<br><br><br>
+	-----------cortar aqui-------------
 	<br>
 </div>
 <button id="btnPrint" class="hidden-print">Imprimir</button>
 <a href="<?php echo base_url() ?>cashier" class="hidden-print">Volver</a>
+
 <script src="script.js"></script>
+
 </body>
 </html>
 

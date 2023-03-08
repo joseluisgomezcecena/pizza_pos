@@ -118,6 +118,7 @@ class Orders extends  CI_Controller
 		$data['client'] = $this->ClientModel->get_client_by_order($order);
 		$data['order_details'] = $this->OrderModel->get_order_items($order);
 
+
 		if(!empty($data['order_details']))
 		{
 			$item = $data['order_details'][0]['item_id'];
