@@ -90,6 +90,17 @@ class OrderModel extends CI_Model
 	}
 
 
+	public function get_single($id)
+	{
+		$this->db->select('orders.*, clients.client_name, clients.client_phone, clients.client_street, clients.client_number, clients.client_block');
+		$this->db->from('orders');
+		$this->db->join('clients', 'clients.client_id = orders.client_id', 'left');
+		$this->db->where('order_id', $id);
+		$query = $this->db->get();
+		return $query->row_array();
+	}
+
+
 	public function get_panels($params = NULL)
 	{
 		if ($params == 'today')
