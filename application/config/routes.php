@@ -59,6 +59,7 @@ $route['cashier/clients/add/(:any)'] = 'cashiers/addclient/$1';
 //view orders
 $route['cashier/list'] = 'cashiers/listorders';
 $route['cashier/view/(:any)'] = 'cashiers/view/$1';
+$route['cashier/delete/(:any)'] = 'cashiers/delete/$1';
 
 //orders and items
 $route['cashier/order/(:any)'] = 'orders/createorder/$1';//parameter is the customer id --- generates a new order and redirects to the following route.
@@ -93,6 +94,7 @@ $route['auth/register'] = 'auth/register';
 
 //admin route.  This is the default route for the admin section
 $route['admin'] = 'admins/index';
+$route['admin/view/(:any)'] = 'admins/view/$1';
 
 $route['admin/sales'] = "sales/index";
 

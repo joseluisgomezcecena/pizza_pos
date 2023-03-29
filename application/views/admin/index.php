@@ -84,12 +84,12 @@
 				<div class="d-flex justify-content-between align-items-center">
 					<h5>Ultimas Transacciones</h5>
 					<div>
-						<a href="#" class="btn btn-sm btn-default">Ver Todo</a>
+						<a href="<?php echo base_url() ?>admin/sales" class="btn btn-dark">Ver Todo</a>
 					</div>
 				</div>
 				<div class="m-t-30">
 					<div class="table-responsive">
-						<table class="table table-hover">
+						<table id="data-table" class="table table-hover">
 							<thead>
 							<tr>
 								<th>ID</th>
@@ -97,6 +97,7 @@
 								<th>Productos</th>
 								<th>Total</th>
 								<th>Status</th>
+								<th>Detalles</th>
 							</tr>
 							</thead>
 							<tbody>
@@ -104,18 +105,25 @@
 
 								<tr>
 									<td>
-										<!--
-										<div class="avatar avatar-image" style="height: 30px; min-width: 30px; max-width:30px">
-											<span style="font-size: 24px; margin-top: -10px;">🍕</span>
-										</div>
-										-->
 										#<?php echo $order['order_id'] ?>
 									</td>
 									<td>
 										<div class="d-flex align-items-center">
 											<div class="d-flex align-items-center">
 
-												<h6 class="m-l-10 m-b-0"><?php echo $order['client_name'] ?></h6>
+												<h6 class="m-l-10 m-b-0">
+													<?php
+														if ($order['client_name'] == NULL)
+														{
+															echo "<b class='text-success'>Mostrador</b>";
+														}
+														else
+														{
+															echo "<b class='text-primary'>".$order['client_name']."</b>";
+														}
+													?>
+												</h6>
+
 											</div>
 										</div>
 									</td>
@@ -123,10 +131,24 @@
 									<td>$<?php echo $order['order_total'] ?></td>
 									<td>
 										<div class="d-flex align-items-center">
-											<span class="badge badge-success badge-dot m-r-10"></span>
-											<span>Terminada</span>
+										
+										<?php
+											if ($order['order_closed'] == 1){
+												echo '<span class="badge badge-success">Terminada</span>';
+											}
+											else{
+												echo '<span class="badge badge-warning">En Proceso</span>';
+											}
+										?>
+
 										</div>
 									</td>
+
+									<td>
+										<a href="<?php echo base_url() ?>admin/view/<?php echo $order['order_id'] ?>" class="btn btn-primary btn-rounded"><i class="fa fa-eye"></i></a>
+									</td>
+
+
 								</tr>
 
 							<?php endforeach; ?>

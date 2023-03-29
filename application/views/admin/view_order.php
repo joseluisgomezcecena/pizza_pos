@@ -8,9 +8,7 @@ $total = 0;
 		<div class="col-lg-12">
 			<a href="<?php echo base_url(); ?>" class="btn btn-dark float-right btn-rounded"> <i class="fa fa-arrow-left"></i>&nbsp;Volver A Inicio</a>
 
-			<a href="<?php echo base_url(); ?>cashier/list" class="btn btn-dark float-right btn-rounded"> <i class="fa fa-arrow-left"></i>&nbsp;Paso Anterior</a>
-
-			<a href="<?php echo base_url(); ?>cashier/order/counter" class="btn btn-success float-left btn-rounded"> <i class="fa fa-cash-register"></i>&nbsp;Orden De Mostrador</a>
+			<a href="<?php echo base_url(); ?>admin" class="btn btn-dark float-right btn-rounded"> <i class="fa fa-arrow-left"></i>&nbsp;Paso Anterior</a>
 			&nbsp;&nbsp;
 		</div>
 	</div>
@@ -21,7 +19,7 @@ $total = 0;
 	<div class="row card ">
 		<div class="col-lg-12 mt-5 mb-5">
 
-		<?php echo form_open(base_url() . "orders/end_and_print/" . $order['order_id'] . "/cashier");?>
+		<?php echo form_open(base_url() . "orders/end_and_print/" . $order['order_id']);?>
 			<button type="submit" name="end" class="btn btn-primary btn-rounded"><i class="fa fa-print"></i>&nbsp;&nbsp;Imprimir Recibo</button>
 		<?php echo form_close();?>
 

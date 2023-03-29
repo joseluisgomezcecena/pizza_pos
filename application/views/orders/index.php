@@ -10,7 +10,7 @@
 		.call-to-action h1{font-size:25px;}
 	}
 </style>
-<?php echo form_open(base_url() . "orders/end_and_print/" . $order);?>
+<?php echo form_open(base_url() . "orders/end_and_print/" . $order . "/cashier");?>
 
 <div class="container-fluid mt-5 mb-5">
 	<div class="row">
@@ -20,7 +20,7 @@
 			<a href="<?php echo base_url(); ?>cashier" class="btn btn-dark float-right mt-5 mb-5 btn-rounded"> <i class="fa fa-arrow-left"></i>&nbsp;Paso Anterior</a>
 
 			<br><br>
-			<button type="submit" class="btn btn-primary btn-lg btn-rounded mt-5 float-left"><i class="anticon anticon-check"></i> Terminar Orden</button>
+			<button type="submit" name="end" class="btn btn-primary btn-lg btn-rounded mt-5 float-left"><i class="anticon anticon-check"></i> Terminar Orden</button>
 		</div>
 
 		<!--columna izquierda-->

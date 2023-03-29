@@ -211,6 +211,22 @@ class OrderModel extends CI_Model
 	}
 
 
+
+	public function delete_empty_order($order)
+	{
+		$this->db->select('*');
+		$this->db->from('order_items');
+		$this->db->where('order_id', $order);
+		$query = $this->db->get();
+		$result = $query->num_rows();
+		if ($result == 0)
+		{
+			$this->db->where('order_id', $order);
+			$this->db->delete('orders');
+		}
+	}
+
+
 	public function end_order($order)
 	{
 		$this->db->count_all('order_items');

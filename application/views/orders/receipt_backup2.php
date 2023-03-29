@@ -11,35 +11,28 @@ $total = 0;
 	<link rel="stylesheet" href="style.css">
 	<title>Recibo</title>
 </head>
-
 <body>
 <div class="ticket centered">
 	<img style="width: 50px; height: auto;" src="<?php echo base_url() ?>assets/img/p1.png" alt="Logo">
-
-	<p class="centered">
-		CHEKOS PIZZA
-		<br>
-		Calle Rio Presidio 1301, Colonia Roma
-	</p>
-
+	<p class="centered">CHEKOS PIZZA
+		<br>Calle Rio Presidio 1301, Colonia Roma</p>
 	<table>
 		<thead>
 		<tr>
 			<th class="quantity">Cant.</th>
 			<th class="description">Descripción</th>
-			<th class="price">Precio</th>
+			<th class="price">$$</th>
 		</tr>
 		</thead>
 		<tbody>
+
+
 		<?php foreach ($order_details as $order_detail): ?>
 		<tr>
 
 			<td class="quantity">
-				<?php echo $order_detail['qty'] ?>
-				<!--
 				$<?php echo $order_detail['price'] ?> X <?php echo $order_detail['qty'] ?><br>
 				Extras: +<?php echo $extra_suma*$order_detail['qty']; ?>
-				-->
 			</td>
 
 			<td class="description">
@@ -50,19 +43,13 @@ $total = 0;
 				foreach ($extras as $extra):
 					$extra_suma += $extra['price'];
 					?>
-					<b>+Extra: <?php echo $extra["ingredient_name"] ?></b> <b class="text-primary">
-					<!--
-					$<?php echo $extra['price'] ?></b>c/u
-					-->
-					<br>
-					+$<?php echo $extras_producto = $order_detail['qty'] * $extra['price'] ?>
+					<b>Extra: <?php echo $extra["ingredient_name"] ?></b> <b class="text-primary">$<?php echo $extra['price'] ?></b><br>
 
 				<?php endforeach; ?>
 			</td>
 
 			<td class="price">
-				$<?php echo $precio_producto =  $order_detail['price'] *  $order_detail['qty'] ?><br>
-				$<?php echo $extras_producto + $precio_producto?>
+				$<?php echo $order_detail['price'] *  $order_detail['qty'] ?><br>
 				<?php $total+= ($order_detail['price'] *  $order_detail['qty'])+($extra_suma * $order_detail['qty'])  ?>
 			</td>
 
@@ -90,7 +77,7 @@ $total = 0;
 	<br>
 </div>
 <button id="btnPrint" class="hidden-print">Imprimir</button>
-<a href="<?php echo base_url() . $link ?>" class="hidden-print">Volver</a>
+<a href="<?php echo base_url() ?>cashier" class="hidden-print">Volver</a>
 
 <script src="script.js"></script>
 

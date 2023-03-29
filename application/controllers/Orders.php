@@ -110,33 +110,48 @@ class Orders extends  CI_Controller
 
 
 
-	public function end_and_print($order)
+	public function end_and_print($order, $source = NULL)
 	{
-		$data['controller'] = $this;
-		$item = null;
-		$data['items'] = $this->ProductModel->getall();
-		$data['client'] = $this->ClientModel->get_client_by_order($order);
-		$data['order_details'] = $this->OrderModel->get_order_items($order);
-
-
-		if(!empty($data['order_details']))
+		if(isset($_POST['end']))
 		{
-			$item = $data['order_details'][0]['item_id'];
+
+			if($source == "cashier")
+			{
+				$data['link'] = "cashier";
+			}
+			else
+			{
+				$data['link'] = "admin";
+			}
+
+			$data['order_data'] = $this->OrderModel->get_single($order);
+
+			$data['controller'] = $this;
+			$item = null;
+			$data['items'] = $this->ProductModel->getall();
+			$data['client'] = $this->ClientModel->get_client_by_order($order);
+			$data['order_details'] = $this->OrderModel->get_order_items($order);
+
+
+			if(!empty($data['order_details']))
+			{
+				$item = $data['order_details'][0]['item_id'];
+			}
+
+
+			$data['order_extras'] = $this->OrderModel->get_order_extras($order, $item);
+			$data['order'] = $order;
+
+			if($data['order_data']['order_closed'] == 0)//only update status if order is not closed.
+			{
+				$this->OrderModel->end_order($order);
+			}
+
+
+			//load views
+			$this->load->view('templates/header_print');
+			$this->load->view('orders/receipt', $data); //loading page and data
 		}
-
-
-		$data['order_extras'] = $this->OrderModel->get_order_extras($order, $item);
-		$data['order'] = $order;
-
-		$this->OrderModel->end_order($order);
-
-
-		//load header, page & footer
-		//$this->load->view('templates/header');
-		$this->load->view('templates/header_print');
-		//$this->load->view('templates/topnav');
-		$this->load->view('orders/receipt', $data); //loading page and data
-		//$this->load->view('templates/footer_cashier');
 	}
 
 

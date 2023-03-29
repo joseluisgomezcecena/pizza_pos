@@ -73,8 +73,11 @@ class Cashiers extends CI_Controller
 
 	public function view($id = NULL)
 	{
+		$data['controller'] = $this;
+
 		$data['title'] = "Orden";
-		$data['order'] = $this->OrderModel->get_order_items($id);
+		$data['order_details'] = $this->OrderModel->get_order_items($id);
+		$data['order'] = $this->OrderModel->get_single($id);
 
 
 		//load header, page & footer
@@ -84,6 +87,40 @@ class Cashiers extends CI_Controller
 		$this->load->view('templates/footer_cashier');
 
 
+	}
+
+
+	public function get_extras($order, $item)
+	{
+		$data = $this->OrderModel->get_order_extras($order, $item);
+		return $data;
+	}
+
+	public function getextraprice()
+	{
+		$ingredient = $this->input->post('ingredient');
+		$price = $this->ProductModel->getextraprice($ingredient);
+		echo $price;
+	}
+
+	public function getprice()
+	{
+		$size = $this->input->post('size');
+		$item = $this->input->post('item');
+
+		//$price = $this->ProductModel->getprice($size, $item);
+		$price = $this->OrderModel->getprice($size, $item);
+
+		//return  json_encode($price);
+		echo $price;
+	}
+
+
+	public function delete($id)
+	{
+		$this->OrderModel->delete_empty_order($id);
+		$this->session->set_flashdata('message', 'Se ha eliminado la orden.');
+		redirect(base_url() . 'cashiers/listorders');
 	}
 
 

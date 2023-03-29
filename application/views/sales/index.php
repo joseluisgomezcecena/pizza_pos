@@ -24,13 +24,14 @@
 				</div>
 				<div class="m-t-30">
 					<div class="table-responsive">
-						<table class="table table-hover">
+						<table class="table table-hover" id="data-table">
 							<thead>
 							<tr>
 								<th>ID</th>
 								<th>Cliente</th>
 								<th>Productos</th>
 								<th>Total</th>
+								<th>Fecha</th>
 								<th>Status</th>
 							</tr>
 							</thead>
@@ -46,7 +47,19 @@
 										<div class="d-flex align-items-center">
 											<div class="d-flex align-items-center">
 
-												<h6 class="m-l-10 m-b-0"><?php echo $order['client_name'] ?></h6>
+												<h6 class="m-l-10 m-b-0">
+													<?php
+														if ($order['client_name'] == NULL)
+														{
+															echo "<b>Mostrador</b>";
+														}
+														else
+														{
+															echo "<b>".$order['client_name']."</b>";
+														}
+													?>
+
+												</h6>
 											</div>
 										</div>
 									</td>
@@ -55,10 +68,24 @@
 
 									<td>$<?php echo $order['order_total'] ?></td>
 
+
+									<td>
+									<?php
+									//format date
+									echo date("d/m/Y", strtotime($order['created_at']));
+									?>
+									</td>
+
 									<td>
 										<div class="d-flex align-items-center">
-											<span class="badge badge-success badge-dot m-r-10"></span>
-											<span>Terminada</span>
+										<?php
+											if ($order['order_closed'] == 1){
+												echo '<span>Terminada</span>';
+											}
+											else{
+												echo '<span>En Proceso</span>';
+											}
+										?>
 										</div>
 									</td>
 

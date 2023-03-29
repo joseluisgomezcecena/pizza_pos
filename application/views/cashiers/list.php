@@ -14,6 +14,24 @@
 
 
 <div style="margin-top: 500px;" class="container mt-5">
+
+	<div class="row">
+		<div class="col">
+			<?php if($this->session->flashdata('message')): ?>
+				<div class="alert alert-success alert-dismissible fade show" role="alert">
+					<span class="alert-icon m-r-20 font-size-30">
+						<i class="anticon anticon-check-circle"></i>
+					</span>
+					<strong>Operación Exitosa</strong>
+					<?php echo $this->session->flashdata('message'); ?>
+					<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+				</div>
+			<?php endif; ?>
+		</div>
+	</div>
+
 	<div class="row card ">
 		<div class="col-lg-12 mt-5 mb-5">
 
@@ -98,10 +116,10 @@
 							<?php echo date_format(date_create($order['created_at']),'m/d/Y H:i:s'); ?>
 						</td>
 						<td>
-							<a href="<?php echo base_url() ?>cashier/view/<?php echo $order['client_id'] ?>" class="btn btn-primary btn-rounded"><i class="fa fa-eye"></i></a>
+							<a href="<?php echo base_url() ?>cashier/view/<?php echo $order['order_id'] ?>" class="btn btn-primary btn-rounded"><i class="fa fa-eye"></i></a>
 
 							<?php if ($order['order_closed'] == 0 && $order['order_total'] == NULL): ?>
-								<a href="<?php echo base_url() ?>cashier/view/<?php echo $order['client_id'] ?>" class="btn btn-danger btn-rounded"><i class="fa fa-trash-alt"></i></a>
+								<a href="<?php echo base_url() ?>cashier/delete/<?php echo $order['order_id'] ?>" class="btn btn-danger btn-rounded"><i class="fa fa-trash-alt"></i></a>
 							<?php endif; ?>
 						</td>
 					</tr>
