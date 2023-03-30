@@ -49,6 +49,21 @@ class ClientModel extends CI_Model
 	}
 
 
+	public function update_client($id)
+	{
+		$data = array(
+			'client_name' => $this->input->post('name'),
+			'client_phone' => $this->input->post('phone'),
+			'client_street' => $this->input->post('street'),
+			'client_number' => $this->input->post('number'),
+			'client_block'=> $this->input->post('neighborhood'),
+			'client_address_notes' => $this->input->post('notes'),
+		);
+
+		$this->db->update('clients', $data, array('client_id' => $id));
+	}
+
+
 	public function update($id)
 	{
 		$data = array(
