@@ -11,6 +11,10 @@
 	}
 </style>
 <?php echo form_open(base_url() . "orders/end_and_print/" . $order . "/cashier");?>
+<br><br><br><br><br>
+<label>Des</label>
+<input id="destiny" name="order_total">
+<?php echo form_close(); ?>
 
 <div class="container-fluid mt-5 mb-5">
 	<div class="row">
@@ -76,31 +80,38 @@
 							<tr>
 
 								<td>
+									<!--platillo-->
 									<?php echo $order_detail['item_name'] ?><br><?php echo $order_detail['size_name'] ?><br>
 									<?php echo $order_detail['notes']?><br/>
-
+									<!--termina platillo-->
+									<!--extras-->
 									<?php
 									$extras = $controller->get_extras($order_detail['order_id'],$order_detail['oi_id']);
 									foreach ($extras as $extra):
 										$extra_suma += $extra['price'];
 									?>
 											<b>Extra:<br><?php echo $extra["ingredient_name"] ?></b> <b class="text-primary">+ $<?php echo $extra['price'] ?></b><br>
-
 									<?php endforeach; ?>
+									<!--termina extras-->
 								</td>
 
 
+								<!--precio-->
 								<td>
 									$<?php echo $order_detail['price'] ?> X <?php echo $order_detail['qty'] ?><br>
 									Extras: +<?php echo $extra_suma*$order_detail['qty']; ?>
 								</td>
+								<!--termina precio-->
 
-
-								<td>$<?php echo $order_detail['price'] *  $order_detail['qty'] ?><br><b>Total: $<?php echo $total = ($order_detail['price'] *  $order_detail['qty'])+($extra_suma * $order_detail['qty'])  ?></b></td>
+								<!--precio total-->
 								<td>
+									$<?php echo $order_detail['price'] *  $order_detail['qty'] ?><br>
+									<b>Total: $<?php echo $total = ($order_detail['price'] *  $order_detail['qty'])+($extra_suma * $order_detail['qty'])  ?></b>
+								</td>
+								<!--termina precio-->
 
-									<a class="btn btn-dark" href="<?php echo base_url() ?>cashier/order/items/edit/<?php echo $order_detail['oi_id'] ?>"><i class="fa fa-edit text-white"></i></a>
-
+								<!--botones-->
+								<td>
 									<?php echo form_open(base_url() . 'orders/remove/' . $order_detail['order_id'] . '/' . $order_detail['oi_id'], array('class' => '', 'id' => 'form')) ?>
 										<button class="btn btn-danger" name="remove"><i class="fa fa-trash text-white"></i></button>
 									<?php echo form_close() ?>
@@ -112,8 +123,8 @@
 									<?php echo form_open(base_url() . 'orders/down/' . $order_detail['order_id'] . '/' . $order_detail['oi_id'],array('class' => '', 'id' => 'form')) ?>
 										<button class="btn btn-warning" name="down"><i class="fa fa-arrow-down text-white"></i></button>
 									<?php echo form_close() ?>
-
 								</td>
+								<!--termina botones-->
 							</tr>
 						<?php
 							$total_suma += $total;
@@ -127,9 +138,16 @@
 		</div>
 	</div>
 </div>
-<input type="hidden" name="order_total" value="<?php echo $total_suma; ?>">
-<?php echo form_close(); ?>
+<input type="" name="order_total_origin" id="origin" onchange="sync()" value="<?php echo $total_suma; ?>">
 
 
+<script>
+	function sync(){
+		var n1 = document.getElementById('origin');
+		var n2 = document.getElementById('destiny');
+		n2.value = n1.value;
+	}
 
+	sync();
+</script>
 
