@@ -78,7 +78,7 @@ class Cashiers extends CI_Controller
 		{
 			$this->ClientModel->update_client($id);
 			$this->session->set_flashdata('message', 'Se ha actualizado el cliente.');
-			redirect(base_url() . 'cashiers');
+			redirect(base_url() . 'cashier');
 		}
 	}
 

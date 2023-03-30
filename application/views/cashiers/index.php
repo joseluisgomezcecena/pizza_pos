@@ -42,8 +42,12 @@
 						<td><?php echo $client['client_block']; ?></td>
 						<td><?php echo $client['client_address_notes']; ?></td>
 						<td>
-							<a href="<?php echo base_url() ?>cashier/order/<?php echo $client['client_id'] ?>" class="btn btn-primary btn-rounded">
+							<a style="width: 120px; padding: 10px; " href="<?php echo base_url() ?>cashier/order/<?php echo $client['client_id'] ?>" class="btn btn-primary btn-rounded text-center mb-3">
 								<i class="fa fa-pizza-slice"></i>&nbsp;+Orden
+							</a>
+							<br>
+							<a style="width: 120px; padding: 10px; " href="<?php echo base_url() ?>cashier/clients/edit/<?php echo $client['client_id'] ?>" class="btn btn-warning btn-rounded text-center">
+								<i class="fa fa-user-edit"></i>&nbsp;Editar
 							</a>
 						</td>
 					</tr>
