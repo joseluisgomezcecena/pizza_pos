@@ -57,7 +57,7 @@ class Cashiers extends CI_Controller
 	public function editclient($id)
 	{
 		$data['title'] = "Editar Cliente";
-		$data['client'] = $this->ClientModel->get_single($id);
+		$data['client'] = $this->ClientModel->get($id);
 
 		$this->form_validation->set_rules('name', 'name', 'required');
 
