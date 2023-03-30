@@ -1,6 +1,7 @@
 <?php
 $extra_suma = 0;
 $total = 0;
+$extras_producto = 0;
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -25,7 +26,7 @@ $total = 0;
 	<table>
 		<thead>
 		<tr>
-			<th class="quantity">Cant.</th>
+			<th class="quantity">Qty.</th>
 			<th class="description">Descripción</th>
 			<th class="price">Precio</th>
 		</tr>

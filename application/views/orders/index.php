@@ -11,9 +11,8 @@
 	}
 </style>
 <?php echo form_open(base_url() . "orders/end_and_print/" . $order . "/cashier");?>
-<br><br><br><br><br>
-<label>Des</label>
-<input id="destiny" name="order_total">
+<input type="hidden" id="destiny" name="order_total">
+<button type="submit" id="primaryButton" name="end"></button>
 <?php echo form_close(); ?>
 
 <div class="container-fluid mt-5 mb-5">
@@ -24,7 +23,7 @@
 			<a href="<?php echo base_url(); ?>cashier" class="btn btn-dark float-right mt-5 mb-5 btn-rounded"> <i class="fa fa-arrow-left"></i>&nbsp;Paso Anterior</a>
 
 			<br><br>
-			<button type="submit" name="end" class="btn btn-primary btn-lg btn-rounded mt-5 float-left"><i class="anticon anticon-check"></i> Terminar Orden</button>
+			<button type="submit" name="end1" onclick="document.getElementById('primaryButton').click()"" class="btn btn-primary btn-lg btn-rounded mt-5 float-left"><i class="anticon anticon-check"></i> Terminar Orden</button>
 		</div>
 
 		<!--columna izquierda-->
@@ -138,7 +137,7 @@
 		</div>
 	</div>
 </div>
-<input type="" name="order_total_origin" id="origin" onchange="sync()" value="<?php echo $total_suma; ?>">
+<input type="hidden" name="order_total_origin" id="origin" onchange="sync()" value="<?php echo $total_suma; ?>">
 
 
 <script>
