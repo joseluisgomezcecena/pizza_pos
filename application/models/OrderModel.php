@@ -58,15 +58,20 @@ class OrderModel extends CI_Model
 
 		$id = $this->db->insert_id();
 
-		foreach ($extras as $extra) {
-			$data = [
-				'oi_id'=>$id,
-				'extra_ingredient_id'=>$extra,
-				'extra_size_id'=>$size,
-				'price'=>$this->get_price_extra($size, $extra)
-			];
-			$this->db->insert('order_item_extras', $data);
+		if($extras != NULL)
+		{
+			foreach ($extras as $extra) {
+				$data = [
+					'oi_id'=>$id,
+					'extra_ingredient_id'=>$extra,
+					'extra_size_id'=>$size,
+					'price'=>$this->get_price_extra($size, $extra)
+				];
+				$this->db->insert('order_item_extras', $data);
+			}
 		}
+
+
 
 		return true;
 	}
