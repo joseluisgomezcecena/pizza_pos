@@ -6,7 +6,7 @@ $attributes = array(
 	'class' => 'mt-5',
 );
 ?>
-<?php echo form_open(base_url() . 'cashiers/addclient/' . $param, $attributes); ?>
+<?php echo form_open(base_url() . 'cashiers/editclient/' . $client['client_id'], $attributes); ?>
 	<div class="row">
 		<div class="col">
 			<?php if ($this->session->flashdata('message')): ?>
