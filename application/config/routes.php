@@ -55,6 +55,7 @@ $route['cashier'] = 'cashiers/index';
 
 //clients
 $route['cashier/clients/add/(:any)'] = 'cashiers/addclient/$1';
+$route['cashier/clients/edit/(:any)'] = 'cashiers/editclient/$1';
 
 //view orders
 $route['cashier/list'] = 'cashiers/listorders';
