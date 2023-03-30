@@ -63,7 +63,11 @@ $extras_producto = 0;
 
 			<td class="price">
 				$<?php echo $precio_producto =  $order_detail['price'] *  $order_detail['qty'] ?><br>
-				$<?php echo $extras_producto + $precio_producto?>
+				<?php
+				if($extras_producto != 0){
+					echo "$" .  $extras_producto + $precio_producto;
+				}
+				?>
 				<?php $total+= ($order_detail['price'] *  $order_detail['qty'])+($extra_suma * $order_detail['qty'])  ?>
 			</td>
 

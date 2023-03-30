@@ -34,8 +34,6 @@ class Cashiers extends CI_Controller
 			//load header, page & footer
 			$this->load->view('templates/header');
 			$this->load->view('templates/topnav');
-			//$this->load->view('templates/sidebar');
-			//$this->load->view('templates/wrapper');
 			$this->load->view('cashiers/add', $data); //loading page and data
 			$this->load->view('templates/footer_cashier');
 		}
@@ -52,6 +50,35 @@ class Cashiers extends CI_Controller
 			{
 				redirect(base_url() . 'cashiers/addclient/new');
 			}
+		}
+	}
+
+
+	public function editclient($id)
+	{
+		$data['title'] = "Editar Cliente";
+		$data['client'] = $this->ClientModel->get_single($id);
+
+		$this->form_validation->set_rules('name', 'name', 'required');
+
+		$this->form_validation->set_error_delimiters(
+			'<div class="alert alert-danger alert-dismissible fade show" role="alert"><strong class="uppercase"><bdi>Error</bdi></strong> &nbsp;',
+			'<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button></div>'
+		);
+
+		if ($this->form_validation->run() === FALSE)
+		{
+			//load header, page & footer
+			$this->load->view('templates/header');
+			$this->load->view('templates/topnav');
+			$this->load->view('cashiers/edit', $data); //loading page and data
+			$this->load->view('templates/footer_cashier');
+		}
+		else
+		{
+			$this->ClientModel->update($id);
+			$this->session->set_flashdata('message', 'Se ha actualizado el cliente.');
+			redirect(base_url() . 'cashiers');
 		}
 	}
 
