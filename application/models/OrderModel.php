@@ -213,6 +213,9 @@ class OrderModel extends CI_Model
 	{
 		$this->db->where('oi_id', $item);
 		$this->db->delete('order_items');
+
+		$this->db->where('oi_id', $item);
+		$this->db->delete('order_item_extras');
 	}
 
 

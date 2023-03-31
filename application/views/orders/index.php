@@ -10,6 +10,8 @@
 		.call-to-action h1{font-size:25px;}
 	}
 </style>
+
+
 <?php echo form_open(base_url() . "orders/end_and_print/" . $order . "/cashier");?>
 <input type="hidden" id="destiny" name="order_total">
 <button type="submit" id="primaryButton" name="end"></button>

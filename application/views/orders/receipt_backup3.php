@@ -2,7 +2,6 @@
 $extra_suma = 0;
 $total = 0;
 $extras_producto = 0;
-$total_suma = 0;
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -33,72 +32,51 @@ $total_suma = 0;
 		</tr>
 		</thead>
 		<tbody>
-		<?php
-		foreach ($order_details as $order_detail):
-		?>
-			<tr>
+		<?php foreach ($order_details as $order_detail): ?>
+		<tr>
 
-				<td>
-					<?php echo $order_detail['qty']; ?>
-				</td>
+			<td class="quantity">
+				<?php echo $order_detail['qty'] ?>
+				<!--
+				$<?php echo $order_detail['price'] ?> X <?php echo $order_detail['qty'] ?><br>
+				Extras: +<?php echo $extra_suma*$order_detail['qty']; ?>
+				-->
+			</td>
 
-
-				<!--precio-->
-				<td>
-					<!--platillo-->
-					<?php echo $order_detail['item_name'] ?><br><?php echo $order_detail['size_name'] ?><br>
-					<?php echo $order_detail['notes']?><br/>
-					<!--termina platillo-->
-
-					<!--extras-->
-					<?php
-					$extras = $controller->get_extras($order_detail['order_id'],$order_detail['oi_id']);
-
-					if($extras != null)
-					{
-						echo "<b>Extra(s):</b><br>";
-						foreach ($extras as $extra):
-							$extra_suma += $extra['price'];
-							?>
-							<small>*<?php echo $extra["ingredient_name"] ?></small><br><small>+ $<?php echo $extra['price'] ?></small><br>
-						<?php
-						endforeach;
-					}
+			<td class="description">
+				<?php echo $order_detail['item_name'] ?><br><?php echo $order_detail['size_name'] ?><br>
+				<?php echo $order_detail['notes']?><br/>
+				<?php
+				$extras = $controller->get_extras($order_detail['order_id'],$order_detail['oi_id']);
+				foreach ($extras as $extra):
+					$extra_suma += $extra['price'];
 					?>
-
-					<br>
-
-					$<?php echo $order_detail['price'] ?> X <?php echo $order_detail['qty'] ?><br>
-					<?php
-					if($extra_suma != 0)
-					{
-						echo "Extras: +" . $extra_suma*$order_detail['qty'];
-					}
-
-					?>
-				</td>
-				<!--termina precio-->
-
-				<!--precio total-->
-				<td>
+					<b>+Extra: <?php echo $extra["ingredient_name"] ?></b> <b class="text-primary">
 					<!--
-					$<?php echo $order_detail['price'] *  $order_detail['qty'] ?><br>
+					$<?php echo $extra['price'] ?></b>c/u
 					-->
-					<b>
-						<!--
-						Total: $
-						-->
-						$<?php echo $total = ($order_detail['price'] *  $order_detail['qty'])+($extra_suma * $order_detail['qty'])  ?>
-					</b>
-				</td>
-				<!--termina precio-->
+					<br>
+					+$<?php echo $extras_producto = $order_detail['qty'] * $extra['price'] ?>
 
-			</tr>
-		<?php
-			$total_suma += $total;
+				<?php endforeach; ?>
+			</td>
+
+			<td class="price">
+				$<?php echo $precio_producto =  $order_detail['price'] *  $order_detail['qty'] ?><br>
+				<?php
+				if($extras_producto != 0){
+					echo "$" .  $extras_producto + $precio_producto;
+				}
+				?>
+				<?php $total+= ($order_detail['price'] *  $order_detail['qty'])+($extra_suma * $order_detail['qty'])  ?>
+			</td>
+
+		</tr>
+			<?php
 			$extra_suma = 0;
-		endforeach;
-		?>
+			endforeach;
+			?>
+
 		</tbody>
 	</table>
 
@@ -109,7 +87,7 @@ $total_suma = 0;
 		<p class="centered"><b>Orden de mostrador</b></p>
 	<?php endif; ?>
 
-	<p class="centered"><b>TOTAL:</b> $<?php echo $total_suma; ?></p>
+	<p class="centered"><b>TOTAL:</b> $<?php echo $total; ?></p>
 	<p class="centered">Gracias Por Su Compra!
 		<br>CHEKOS PIZZA</p>
 	<br><br><br>
