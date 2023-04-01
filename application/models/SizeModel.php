@@ -97,6 +97,8 @@ class SizeModel extends CI_Model
 	public function delete_size($id)
 	{
 		$this->db->delete('sizes', array('size_id' => $id));
+
+		$this->db->delete('item_size', array('size_id' => $id));
 	}
 
 
