@@ -92,7 +92,7 @@
 					<div class="row mt-3">
 						<div class="col">
 							<label>Cantidad:</label>
-							<input type="number" name="qty" class="form-control" required>
+							<input type="number" name="qty" class="form-control" min="1" required>
 						</div>
 					</div>
 
