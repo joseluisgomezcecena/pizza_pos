@@ -86,6 +86,10 @@ class IngredientModel extends CI_Model
 	{
 		$this->db->where('ingredient_id', $id);
 		$this->db->delete('ingredients');
+
+		$this->db->where('ingredient_id', $id);
+		$this->db->delete('item_ingredient');
+
 	}
 
 
