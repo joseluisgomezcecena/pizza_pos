@@ -83,7 +83,7 @@ class Items extends MY_Controller
 		}
 		else
 		{
-			$this->ItemModel->edit($data['sizes'], $id);
+			$this->ItemModel->edit($data['sizes'], $id, 1);
 			$this->session->set_flashdata('message', 'El platillo ha sido editado.');
 			redirect(base_url() . 'items/index');
 		}
