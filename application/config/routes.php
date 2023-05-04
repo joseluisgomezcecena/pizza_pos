@@ -124,6 +124,11 @@ $route['admin/sides/edit/(:any)'] = 'sides/edit/$1';//sides
 $route['admin/sides/delete/(:any)'] = 'sides/delete/$1';//sides
 
 
+//shipping and deliveries
+$route['admin/shipping'] = 'shipping/index';
+$route['admin/shipping/edit/(:any)'] = 'shipping/edit/$1';
+$route['admin/shipping/delete/(:any)'] = 'shipping/delete/$1';
+
 /* PAGES ROUTES */
 $route['(:any)'] = 'pages/view/$1';
 $route['default_controller'] = 'pages/view';

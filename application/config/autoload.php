@@ -141,4 +141,5 @@ $autoload['model'] = array(
 	'ExtraModel',
 	'ItemModel',
 	'UserModel',
+	'ShippingModel',
 );
