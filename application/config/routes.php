@@ -129,6 +129,7 @@ $route['admin/shipping'] = 'shipping/index';
 $route['admin/shipping/edit/(:any)'] = 'shipping/edit/$1';
 $route['admin/shipping/delete/(:any)'] = 'shipping/delete/$1';
 
+
 /* PAGES ROUTES */
 $route['(:any)'] = 'pages/view/$1';
 $route['default_controller'] = 'pages/view';

@@ -59,7 +59,7 @@ class Shipping extends MY_Controller
 			$this->load->view('templates/topnav');
 			$this->load->view('templates/sidebar');
 			$this->load->view('templates/wrapper');
-			$this->load->view('delivery/edit', $data); //loading page and data
+			$this->load->view('shipping/edit', $data); //loading page and data
 			$this->load->view('templates/footer');
 		}
 		else
@@ -95,7 +95,7 @@ class Shipping extends MY_Controller
 		}
 		else
 		{
-			$this->SizeModel->delete_size($id);
+			$this->ShippingModel->delete_delivery($id);
 			$this->session->set_flashdata('message', 'El tipo de entrega ha sido eliminado.');
 			redirect(base_url() . 'admin/shipping');
 		}
