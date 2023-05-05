@@ -40,10 +40,12 @@
 	-->
 
 	<div class="row">
-		<div class="col mt-5">
-			<img class="img-fluid img-thumbnail" src="<?php echo base_url() ?>assets/uploads/pepperoni.jpg" alt="Product">
-		</div>
 
+		<!--
+		<div class="col-md-4 mt-5">
+			<img class="img-fluid img-thumbnail" src="<?php echo base_url() ?>assets/img/animations/making-pizza.gif" alt="Product">
+		</div>
+		-->
 		<div class="col align-middle mt-5">
 			<div class="card">
 				<div class="card-body">
@@ -53,7 +55,7 @@
 
 					<div class="row mt-3">
 						<div class="col">
-							<label>Tamaño:</label>
+							<label>Tamaños:</label>
 							<select class="form-control" name="size" id="size" required>
 								<option value="">Seleccione</option>
 								<?php foreach ($sizes as $size): ?>
