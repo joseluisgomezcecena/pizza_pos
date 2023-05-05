@@ -99,6 +99,13 @@ $total_suma = 0;
 			$extra_suma = 0;
 		endforeach;
 		?>
+
+		<tr>
+			<td>1</td>
+			<td>Envio</td>
+			<td>$<?php echo $order_data['delivery_price']; ?></td>
+		</tr>
+
 		</tbody>
 	</table>
 
@@ -109,7 +116,7 @@ $total_suma = 0;
 		<p class="centered"><b>Orden de mostrador</b></p>
 	<?php endif; ?>
 
-	<p class="centered"><b>TOTAL:</b> $<?php echo $total_suma; ?></p>
+	<p class="centered"><b>TOTAL:</b> $<?php echo $total_suma + $order_data['delivery_price']; ?></p>
 	<p class="centered">Gracias Por Su Compra!
 		<br>CHEKOS PIZZA</p>
 	<br><br><br>

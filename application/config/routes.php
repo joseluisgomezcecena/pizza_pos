@@ -70,6 +70,7 @@ $route['cashier/order/items/add/(:any)'] = 'orders/addtocart/$1';
 $route['cashier/order/items/remove/(:any)/(:any)'] = 'orders/removefromcart/$1/$2';
 $route['cashier/order/addtoorder/(:any)'] = 'orders/addtoorder/$1';
 
+$route['orders/end_and_print/(:any)/(:any)'] = 'orders/end_and_print/$1/$2';
 
 //items
 $route['cashier/order/items/edit/(:any)/(:any)'] = 'orders/edititem/$1/$2';

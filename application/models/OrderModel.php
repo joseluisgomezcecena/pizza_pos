@@ -246,6 +246,7 @@ class OrderModel extends CI_Model
 		$this->db->set('order_closed', 1, FALSE);
 		$this->db->set('order_qty', $result, FALSE);
 		$this->db->set('order_total', $this->input->post('order_total'), FALSE);
+		$this->db->set('delivery_price', $this->input->post('shipping_total'), FALSE);
 		$this->db->where('order_id', $order);
 		$this->db->update('orders');
 	}

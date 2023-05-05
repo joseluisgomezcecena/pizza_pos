@@ -12,10 +12,21 @@
 </style>
 
 
-<?php echo form_open(base_url() . "orders/end_and_print/" . $order . "/cashier");?>
-<input type="hidden" id="destiny" name="order_total">
-<button type="submit" id="primaryButton" name="end"></button>
-<?php echo form_close(); ?>
+<div class="container-fluid mt-5 mb-5">
+	<div class="row">
+		<div class="col-lg-6">
+			<br><Br><br/><br><br>
+			<?php echo form_open(base_url() . "orders/end_and_print/" . $order . "/cashier");?>
+			<input type="text" id="destiny" name="order_total">
+			<input type="text" id="shipping-destiny" name="shipping_total">
+			<button style="opacity: 0" type="submit" id="primaryButton" name="end"></button>
+
+			<?php echo form_close(); ?>
+		</div>
+	</div>
+</div>
+
+
 
 <div class="container-fluid mt-5 mb-5">
 	<div class="row">
@@ -25,7 +36,7 @@
 			<a href="<?php echo base_url(); ?>cashier" class="btn btn-dark float-right mt-5 mb-5 btn-rounded"> <i class="fa fa-arrow-left"></i>&nbsp;Paso Anterior</a>
 
 			<br><br>
-			<button type="submit" name="end1" onclick="document.getElementById('primaryButton').click()"" class="btn btn-primary btn-lg btn-rounded mt-5 float-left"><i class="anticon anticon-check"></i> Terminar Orden</button>
+			<button type="submit" name="end1" id="endorder" onclick="document.getElementById('primaryButton').click()"" class="btn btn-primary btn-lg btn-rounded mt-5 float-left"><i class="anticon anticon-check"></i> Terminar Orden</button>
 		</div>
 
 		<!--columna izquierda-->
@@ -61,6 +72,15 @@
 		<div class="col-lg-7 mt-5">
 			<div class="card">
 				<div class="card-body">
+
+					<label> <i style="font-size: 28px;">🛵</i> Tipo de envio</label>
+					<select style="" class="form-control" name="shipping" id="shipping" required>
+						<option value="">Seleccione</option>
+						<?php foreach ($deliveries as $delivery): ?>
+							<option value="<?php echo $delivery['delivery_price']; ?>"><?php echo $delivery['delivery_name']; ?> - $<?php echo $delivery['delivery_price']; ?></option>
+						<?php endforeach; ?>
+					</select>
+
 					<table style="width: 100%" id="" class="table table-hover">
 						<thead>
 						<tr>
@@ -148,7 +168,29 @@
 		var n2 = document.getElementById('destiny');
 		n2.value = n1.value;
 	}
-
 	sync();
+
+
+
+
+	//disable endorder button if select shipping is empty with vanilla javascript.
+
+	var shipping = document.getElementById('shipping');
+	var endorder = document.getElementById('endorder');
+	var shipping_destiny = document.getElementById('shipping-destiny');
+
+	endorder.disabled = true;
+
+	shipping.addEventListener('change', function(){
+		if(shipping.value == ''){
+			endorder.disabled = true;
+		}else{
+			endorder.disabled = false;
+
+			shipping_destiny.value = shipping.value;
+		}
+	});
+
+
 </script>
 

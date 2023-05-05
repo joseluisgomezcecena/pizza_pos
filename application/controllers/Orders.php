@@ -20,6 +20,7 @@ class Orders extends  CI_Controller
 		$data['items'] = $this->ProductModel->getall();
 		$data['client'] = $this->ClientModel->get_client_by_order($order);
 		$data['order_details'] = $this->OrderModel->get_order_items($order);
+		$data['deliveries'] = $this->ShippingModel->get_deliveries();
 
 		if(!empty($data['order_details']))
 		{
@@ -151,6 +152,10 @@ class Orders extends  CI_Controller
 			//load views
 			$this->load->view('templates/header_print');
 			$this->load->view('orders/receipt', $data); //loading page and data
+		}
+		else
+		{
+			redirect(base_url() . 'cashier/order/items/' . $order);
 		}
 	}
 
