@@ -18,9 +18,6 @@
 <div class="container-fluid mt-5 mb-5">
 
 	<div class="row">
-		<div class="col mt-5">
-			<img class="img-fluid img-thumbnail" src="<?php echo base_url() ?>assets/uploads/pepperoni.jpg" alt="Product">
-		</div>
 
 		<div class="col align-middle mt-5">
 			<div class="card">
