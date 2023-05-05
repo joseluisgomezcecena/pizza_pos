@@ -52,6 +52,25 @@
 			</li>
 
 
+			<!--ENTREGAS CONFIG-->
+			<li class="nav-item dropdown">
+				<a class="dropdown-toggle" href="javascript:void(0);">
+                                <span class="icon-holder">
+                                    <i class="fa fa-motorcycle fa-lg"></i>
+                                </span>
+					<span class="title">Configurar Envios</span>
+					<span class="arrow">
+                                    <i class="arrow-icon"></i>
+                                </span>
+				</a>
+				<ul class="dropdown-menu">
+					<li>
+						<a href="<?php echo base_url() ?>admin/shipping">Precios de envio.</a>
+					</li>
+				</ul>
+			</li>
+
+
 
 			<!--PLATILLOS CONFIG-->
 			<li class="nav-item dropdown">
