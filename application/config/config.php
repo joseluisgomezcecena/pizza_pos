@@ -3,7 +3,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 date_default_timezone_set('America/Tijuana');
 
-$config['base_url'] = 'http://localhost/pos_system/pizzeria';
+$config['base_url'] = 'http://127.0.0.1:8888';
+#$config['base_url'] = 'http://localhost/pos_system/pizzeria';
 #$config['base_url'] = 'http://leanquattro.com/pos/pizzeria';
 
 
