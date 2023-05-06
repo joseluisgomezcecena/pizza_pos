@@ -10,7 +10,7 @@
 					<input class="form-control" type="date" name="end" id="end">
 				</div>
 				<div class="col-md-6">
-					<button class="btn btn-primary float-left" type="submit" name="report"><i class="fa fa-search"></i>&nbsp;Buscar</button>
+					<button class="btn btn-primary btn-rounded float-left" type="submit" name="report"><i class="fa fa-search"></i>&nbsp;Buscar</button>
 				</div>
 			</div>
 		<?php echo form_close(); ?>
@@ -30,9 +30,11 @@
 								<th>ID</th>
 								<th>Cliente</th>
 								<th>Productos</th>
+								<th>Subtotal</th>
+								<th>Envio</th>
 								<th>Total</th>
 								<th>Fecha</th>
-								<th>Status</th>
+
 							</tr>
 							</thead>
 							<tbody>
@@ -68,6 +70,21 @@
 
 									<td>$<?php echo $order['order_total'] ?></td>
 
+									<td>
+										$
+										<?php
+											if ($order['delivery_price'] == NULL || $order['delivery_price'] == 0 || $order['delivery_price'] == ""	)
+											{
+												echo "0";
+											}
+											else
+											{
+												echo $order['delivery_price'];
+											}
+										?>
+									</td>
+
+									<td>$<?php echo $order['order_total'] + $order['delivery_price']; ?></td>
 
 									<td>
 									<?php
@@ -76,18 +93,6 @@
 									?>
 									</td>
 
-									<td>
-										<div class="d-flex align-items-center">
-										<?php
-											if ($order['order_closed'] == 1){
-												echo '<span>Terminada</span>';
-											}
-											else{
-												echo '<span>En Proceso</span>';
-											}
-										?>
-										</div>
-									</td>
 
 								</tr>
 
