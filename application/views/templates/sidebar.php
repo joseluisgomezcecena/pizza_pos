@@ -2,8 +2,23 @@
 <div style="" class="side-nav">
 	<div class="side-nav-inner">
 		<ul class="side-nav-menu scrollable">
+
+
 			<!--ORDENES-->
-			<li class="nav-item dropdown open">
+			<li class="nav-item dropdown">
+				<a class="dropdown-toggle" href="<?php echo base_url() ?>admin">
+					<span class="icon-holder">
+						<i class="anticon anticon-dashboard fa-lg"></i>
+					</span>
+					<span class="title">Inicio</span>
+				</a>
+			</li>
+
+
+
+
+			<!--ORDENES-->
+			<li class="nav-item dropdown">
 				<a class="dropdown-toggle" href="javascript:void(0);">
                                 <span class="icon-holder">
                                     <i class="anticon anticon-file fa-lg"></i>
