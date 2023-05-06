@@ -82,9 +82,9 @@
 		<div class="card">
 			<div class="card-body">
 				<div class="d-flex justify-content-between align-items-center">
-					<h5>Ultimas Transacciones</h5>
+					<h5 class="font-weight-bolder">Ultimas Ventas</h5>
 					<div>
-						<a href="<?php echo base_url() ?>admin/sales" class="btn btn-dark">Ver Todo</a>
+						<a href="<?php echo base_url() ?>admin/sales" class="btn btn-primary btn-rounded">Ver todas las ventas </a>
 					</div>
 				</div>
 				<div class="m-t-30">
@@ -95,8 +95,14 @@
 								<th>ID</th>
 								<th>Cliente</th>
 								<th>Productos</th>
-								<th>Total</th>
+								<th>Venta</th>
+								<th>Envio</th>
+
+								<!--
 								<th>Status</th>
+								-->
+
+								<th>Fecha</th>
 								<th>Detalles</th>
 							</tr>
 							</thead>
@@ -129,6 +135,18 @@
 									</td>
 									<td><?php echo $order['order_qty'] ?></td>
 									<td>$<?php echo $order['order_total'] ?></td>
+									<td>$
+										<?php
+											if ($order['delivery_price'] == 0 || $order['delivery_price'] == NULL)
+											{
+												echo "0";
+											}
+											else
+											{
+												echo $order['delivery_price'];
+											}
+										?>
+									<!--
 									<td>
 										<div class="d-flex align-items-center">
 										
@@ -143,9 +161,16 @@
 
 										</div>
 									</td>
+									-->
 
 									<td>
-										<a href="<?php echo base_url() ?>admin/view/<?php echo $order['order_id'] ?>" class="btn btn-primary btn-rounded"><i class="fa fa-eye"></i></a>
+										<?php echo date_format(date_create($order['created_at']), 'd/M/Y H:i')  ?>
+									</td>
+
+									<td>
+										<a href="<?php echo base_url() ?>admin/view/<?php echo $order['order_id'] ?>" class="btn btn-primary btn-rounded">
+											<i class="fa fa-file-invoice"></i>&nbsp; Detalles
+										</a>
 									</td>
 
 

@@ -95,6 +95,28 @@ class OrderModel extends CI_Model
 	}
 
 
+
+
+	public function get_orders_limit($limit = NULL)
+	{
+
+
+		$this->db->where('orders.order_closed', 1);
+
+		$this->db->select('orders.*, clients.client_name, clients.client_phone, clients.client_street, clients.client_number, clients.client_block');
+		$this->db->from('orders');
+		$this->db->join('clients', 'clients.client_id = orders.client_id', 'left');
+		$this->db->order_by('orders.order_id', 'DESC');
+		$this->db->limit($limit);
+		$query = $this->db->get();
+		return $query->result_array();
+	}
+
+
+
+
+
+
 	public function get_single($id)
 	{
 		$this->db->select('orders.*, clients.client_name, clients.client_phone, clients.client_street, clients.client_number, clients.client_block');

@@ -1,4 +1,4 @@
-<br><br><br><br>
+<br><br>
 <?php
 $extra_suma = 0;
 $total = 0;
@@ -17,11 +17,12 @@ $total = 0;
 
 <div style="margin-top: 500px;" class="container mt-5">
 	<div class="row card ">
-		<div class="col-lg-12 mt-5 mb-5">
+		<div class="col-lg-12 mt-5 mb-3">
 
 		<?php echo form_open(base_url() . "orders/end_and_print/" . $order['order_id']);?>
 			<button type="submit" name="end" class="btn btn-primary btn-rounded"><i class="fa fa-print"></i>&nbsp;&nbsp;Imprimir Recibo</button>
 		<?php echo form_close();?>
+			<br>
 
 			<table class="table table-responsive-lg">
 				<thead>
@@ -31,8 +32,6 @@ $total = 0;
 					<th style="width: 100px;">Teléfono</th>
 					<th style="width: 180px;">Dirección</th>
 					<th style="width: 70px;">Productos</th>
-					<th style="width: 70px;">Total</th>
-					<th style="width: 100px;">Status</th>
 					<th style="width: 100px;">Fecha</th>
 				</tr>
 				</thead>
@@ -74,36 +73,21 @@ $total = 0;
 						</td>
 						<td><?php echo $order['order_qty']; ?></td>
 						<td>
-							<?php
-							if ($order['order_total'] == NULL)
-							{
-								echo "__";
-							}
-							else
-							{
-								echo $order['order_total'];
-							}
-							?>
-						</td>
-						<td>
-							<?php
-							if ($order['order_closed'] == 1){
-								echo '<span class="badge badge-success">Terminada</span>';
-							}
-							else{
-								echo '<span class="badge badge-warning">En Proceso</span>';
-							}
-							?>
-						</td>
-						<td>
 							<?php echo date_format(date_create($order['created_at']),'m/d/Y H:i:s'); ?>
 						</td>
 					</tr>
 				</tbody>
 			</table>
 
+		</div>
+	</div>
+</div>
 
 
+
+<div style="margin-top: 500px;" class="container mt-2">
+	<div class="row card ">
+		<div class="col-lg-12 mt-3 mb-3">
 
 			<table class="table table-responsive-lg">
 				<thead>
@@ -124,7 +108,7 @@ $total = 0;
 
 							<?php
 							$extras = $controller->get_extras($order_detail['order_id'],$order_detail['oi_id']);
-							
+
 							foreach ($extras as $extra):
 								$extra_suma += $extra['price'];
 							endforeach; ?>
@@ -159,6 +143,8 @@ $total = 0;
 				endforeach;
 				?>
 
+
+
 				</tbody>
 			</table>
 
@@ -166,7 +152,9 @@ $total = 0;
 			<div class="row">
 				<div class="col-lg-12">
 					<div class="float-right">
-						<h4 style="margin-right: 25px;"><u><b>Total:</b> $<?php echo $total; ?></u></h4>
+						<h4 style="margin-right: 25px;"><b>Venta:</b> $<?php echo $total; ?></h4>
+						<h4 style="margin-right: 25px;"><b>Envio:</b> $<?php echo $order['delivery_price']; ?></h4>
+						<h4 style="margin-right: 25px;"><u><b>Total:</b> $<?php echo $total +  $order['delivery_price']; ?></u></h4>
 					</div>
 				</div>
 			</div>

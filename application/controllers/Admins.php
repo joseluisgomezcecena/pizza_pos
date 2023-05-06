@@ -5,7 +5,7 @@ class Admins extends MY_Controller
 	{
 		$data['title'] = "Administrador.";
 
-		$data['orders'] = $this->OrderModel->get_orders();
+		$data['orders'] = $this->OrderModel->get_orders_limit(50);
 		$data['panels'] = $this->OrderModel->get_panels('today');
 		$data['panels_month'] = $this->OrderModel->get_panels('month');
 
