@@ -52,7 +52,7 @@
 				{extend:'pdfHtml5', className: 'btn btn-danger',title:'Reporte PizzaPOS <?php echo date("m-d-Y"); ?>'},
 			],
 			"oLanguage": {
-				"sEmptyTable": "No hay informacion... <a href='<?php echo base_url() ?>request/new' class='btn btn-primary'>Agregar Aqui</a>",
+				"sEmptyTable": "No hay informacion de clientes... <br><br/><br> <a href='<?php echo base_url() ?>cashier/clients/add/next' class='btn btn-primary'>Agregar Aqui</a>",
 				"sZeroRecords": "No se encontró el cliente ... <br><br> <a href='<?php echo base_url() ?>cashier/clients/add/next' class='btn btn-primary btn-rounded'>Agregar Aqui</a>"
 			},
 		} );
