@@ -125,13 +125,22 @@ class Orders extends  CI_Controller
 				$data['link'] = "admin";
 			}
 
-			$data['order_data'] = $this->OrderModel->get_single($order);
 
 			$data['controller'] = $this;
 			$item = null;
 			$data['items'] = $this->ProductModel->getall();
 			$data['client'] = $this->ClientModel->get_client_by_order($order);
 			$data['order_details'] = $this->OrderModel->get_order_items($order);
+			$data['order_data'] = $this->OrderModel->get_single($order);
+
+			if($this->input->post('shipping_total') != NULL)
+			{
+				$data['shipping_price'] = $this->input->post('shipping_total');
+			}
+			else
+			{
+				$data['shipping_price'] = 0;
+			}
 
 
 			if(!empty($data['order_details']))

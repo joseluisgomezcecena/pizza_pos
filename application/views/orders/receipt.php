@@ -103,7 +103,7 @@ $total_suma = 0;
 		<tr>
 			<td>1</td>
 			<td>Envio</td>
-			<td>$<?php echo $order_data['delivery_price']; ?></td>
+			<td>$<?php echo $shipping_price; ?></td>
 		</tr>
 
 		</tbody>
@@ -116,7 +116,7 @@ $total_suma = 0;
 		<p class="centered"><b>Orden de mostrador</b></p>
 	<?php endif; ?>
 
-	<p class="centered"><b>TOTAL:</b> $<?php echo $total_suma + $order_data['delivery_price']; ?></p>
+	<p class="centered"><b>TOTAL:</b> $<?php echo $total_suma + $shipping_price; ?></p>
 	<p class="centered">Gracias Por Su Compra!
 		<br>CHEKOS PIZZA</p>
 	<br><br><br>

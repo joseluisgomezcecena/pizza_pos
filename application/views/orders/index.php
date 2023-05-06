@@ -17,8 +17,8 @@
 		<div class="col-lg-6">
 			<br><Br><br/><br><br>
 			<?php echo form_open(base_url() . "orders/end_and_print/" . $order . "/cashier");?>
-			<input type="text" id="destiny" name="order_total">
-			<input type="text" id="shipping-destiny" name="shipping_total">
+			<input type="hidden" id="destiny" name="order_total">
+			<input type="hidden" id="shipping-destiny" name="shipping_total">
 			<button style="opacity: 0" type="submit" id="primaryButton" name="end"></button>
 
 			<?php echo form_close(); ?>

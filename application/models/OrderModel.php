@@ -124,6 +124,11 @@ class OrderModel extends CI_Model
 		$this->db->join('clients', 'clients.client_id = orders.client_id', 'left');
 		$this->db->where('order_id', $id);
 		$query = $this->db->get();
+
+		//print query
+		#$last_query = $this->db->last_query();
+		#print_r($last_query);
+
 		return $query->row_array();
 	}
 
