@@ -12,10 +12,9 @@
 </style>
 
 
-<div class="container-fluid mt-5 mb-5">
+<div class="container-fluid mt-2 mb-5">
 	<div class="row">
 		<div class="col-lg-6">
-			<br><Br><br/><br><br>
 			<?php echo form_open(base_url() . "orders/end_and_print/" . $order . "/cashier");?>
 			<input type="hidden" id="destiny" name="order_total">
 			<input type="hidden" id="shipping-destiny" name="shipping_total">
@@ -174,7 +173,6 @@
 
 
 	//disable endorder button if select shipping is empty with vanilla javascript.
-
 	var shipping = document.getElementById('shipping');
 	var endorder = document.getElementById('endorder');
 	var shipping_destiny = document.getElementById('shipping-destiny');
