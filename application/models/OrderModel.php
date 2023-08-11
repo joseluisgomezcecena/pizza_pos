@@ -259,6 +259,39 @@ class OrderModel extends CI_Model
 			$this->db->where('order_id', $order);
 			$this->db->delete('orders');
 		}
+		else
+		{
+			//check if user is logged in.
+			if (isset($this->session->userdata['logged_in']))
+			{
+
+				$this->db->select('*');
+				$this->db->from('order_items');
+				$this->db->where('order_id', $order);
+				$query = $this->db->get();
+				foreach ($query->result_array() as $item)
+				{
+					$this->db->where('oi_id', $item['oi_id']);
+					$this->db->delete('order_item_extras');
+				}
+
+
+				//delete order items.
+				$this->db->where('order_id', $order);
+				$this->db->delete('order_items');
+
+
+
+				//delete order item extras.
+				//$this->db->where('order_id', $order);
+				//$this->db->delete('order_item_extras');
+
+				//delete order.
+				$this->db->where('order_id', $order);
+				$this->db->delete('orders');
+			}
+
+		}
 	}
 
 
