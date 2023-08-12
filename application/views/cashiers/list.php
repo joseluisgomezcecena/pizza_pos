@@ -122,7 +122,7 @@
 								<a href="<?php echo base_url() ?>cashier/delete/<?php echo $order['order_id'] ?>" class="btn btn-danger btn-rounded"><i class="fa fa-trash-alt"></i></a>
 							<?php endif; ?>
 
-							<?php if ($order['order_closed'] != 0 && $order['order_total'] != NULL): ?>
+							<?php if ($order['order_closed'] != 0 && $order['order_total'] != NULL && isset($this->session->userdata['logged_in'])): ?>
 								<a href="<?php echo base_url() ?>cashier/delete/<?php echo $order['order_id'] ?>" class="btn btn-danger btn-rounded"><i class="fa fa-trash-alt"></i></a>
 							<?php endif; ?>
 
